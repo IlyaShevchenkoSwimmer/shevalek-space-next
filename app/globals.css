@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+* {
+  /* outline: 2px solid green; */
+  box-sizing: border-box;
+}
+
+.aside-hidden {
+  left: -40vw;
+}
+
+.aside-menu-li:hover div {
+  opacity: 1;
+}
+
+.filters:hover div {
+  opacity: 1;
+}
+
+@keyframes logoLetterAnimation {
+  from {
+    left: 150vw;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .aside-hidden {
+    left: -60vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .aside-hidden {
+    left: -100vw;
+  }
+}

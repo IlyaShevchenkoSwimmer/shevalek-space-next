@@ -1,0 +1,7 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/notes/route": "/api/notes",
+  "/api/photos/route": "/api/photos",
+  "/api/photos/refresh/route": "/api/photos/refresh",
+  "/page": "/"
+}
