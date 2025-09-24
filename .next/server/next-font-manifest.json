@@ -1,22 +1,6 @@
 {
-  "app": {
-    "[project]/app/_not-found/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ],
-    "[project]/app/diplomas/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ],
-    "[project]/app/notes/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ],
-    "[project]/app/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ],
-    "[project]/app/photos/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ]
-  },
-  "appUsingSizeAdjust": true,
+  "app": {},
+  "appUsingSizeAdjust": false,
   "pages": {},
   "pagesUsingSizeAdjust": false
 }
