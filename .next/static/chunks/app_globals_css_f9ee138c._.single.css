@@ -312,6 +312,10 @@
     display: flex;
   }
 
+  .grid {
+    display: grid;
+  }
+
   .hidden {
     display: none;
   }
@@ -348,10 +352,6 @@
     height: 20vh;
   }
 
-  .h-\[40vh\] {
-    height: 40vh;
-  }
-
   .h-\[60vh\] {
     height: 60vh;
   }
@@ -362,6 +362,10 @@
 
   .h-lvh {
     height: 100lvh;
+  }
+
+  .max-h-\[60vh\] {
+    max-height: 60vh;
   }
 
   .min-h-lvh {
@@ -434,6 +438,14 @@
 
   .rotate-135 {
     rotate: 135deg;
+  }
+
+  .grid-cols-6 {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 
   .flex-col {

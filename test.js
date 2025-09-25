@@ -199,12 +199,29 @@ const jsonAnswer = [
   },
 ];
 
-function gridPhotosArray(jsonAnswer) {
+function gridPhotosArray(jsonAnswer, currentFilter, version) {
   let index = 0;
   const resultArr = [];
   const currArr = [];
   let currArrIndex = 0;
   while (index < jsonAnswer.length) {
+    if (jsonAnswer[index].category === "Дипломы" && version !== "diplomas") {
+      index++;
+      continue;
+    }
+    if (jsonAnswer[index].category !== "Дипломы" && version === "diplomas") {
+      index++;
+      continue;
+    }
+    if (currentFilter !== "") {
+      if (
+        jsonAnswer[index].category !== currentFilter &&
+        jsonAnswer[index].dateTime.slice(0, 4) !== currentFilter
+      ) {
+        index++;
+        continue;
+      }
+    }
     currArr.push(jsonAnswer[index]);
 
     if (index === 0) {
@@ -246,6 +263,6 @@ function gridPhotosArray(jsonAnswer) {
   return resultArr;
 }
 
-const gridLayout = gridPhotosArray(jsonAnswer);
+const gridLayout = gridPhotosArray(jsonAnswer, "", "photos");
 
 console.log(gridLayout);
