@@ -5,6 +5,7 @@ import Image from "next/image";
 import GalleryFilterButton from "./GalleryFilterButton";
 import { gridPhotosArray } from "@/app/helpers/gridPhotosArray";
 import GridCard from "./GridCard";
+import { EmblaCarousel } from "./EmblaCarousel";
 
 export interface Photo {
   name: string;
@@ -16,6 +17,8 @@ export interface Photo {
 interface GalleryVersion {
   version: string;
 }
+
+const emblaClasses = ["embla", "embla__container", "embla__slide"];
 
 export default function Gallery({ version }: GalleryVersion) {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -33,11 +36,17 @@ export default function Gallery({ version }: GalleryVersion) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (
+            entry.isIntersecting &&
+            !emblaClasses.includes(entry.target.classList[0])
+          ) {
             (entry.target as HTMLElement).style.scale = "1";
           }
 
-          if (!entry.isIntersecting) {
+          if (
+            !entry.isIntersecting &&
+            !emblaClasses.includes(entry.target.classList[0])
+          ) {
             (entry.target as HTMLElement).style.scale = "0.3";
           }
         });
@@ -88,6 +97,7 @@ export default function Gallery({ version }: GalleryVersion) {
         }
         return media[index];
       })}
+      <EmblaCarousel photos={photos} />
     </section>
   );
 }

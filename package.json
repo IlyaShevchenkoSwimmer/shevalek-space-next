@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "embla-carousel-react": "^8.6.0",
     "exif-js": "^2.3.0",
     "exif-parser": "^0.1.12",
     "exif-reader": "^2.0.2",
