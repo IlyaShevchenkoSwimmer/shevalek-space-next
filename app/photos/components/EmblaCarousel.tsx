@@ -16,6 +16,7 @@ export function EmblaCarousel({ photos }: emblaCarouselProps) {
     (emblaApi: { slidesNotInView(): any; slidesInView: () => any }) => {
       const slidesInView = emblaApi.slidesInView();
       const slidesNotInView = emblaApi.slidesNotInView();
+      const allSlides = document.querySelectorAll(".embla__slide");
 
       slidesInView.forEach((slide: number) => {
         const slideDiv = document.getElementById("slide" + slide);
@@ -27,6 +28,18 @@ export function EmblaCarousel({ photos }: emblaCarouselProps) {
         const slideDiv = document.getElementById("slide" + slide);
         ((slideDiv as HTMLElement).children[0] as HTMLElement).style.display =
           "none";
+      });
+
+      allSlides.forEach((slideDiv, index) => {
+        if (index > Math.max(...slidesInView) + 3) {
+          (slideDiv as HTMLElement).style.width = "0";
+          return;
+        }
+        if (index < Math.min(...slidesInView) - 3) {
+          (slideDiv as HTMLElement).style.width = "0";
+          return;
+        }
+        (slideDiv as HTMLElement).style.width = "100%";
       });
     },
     []

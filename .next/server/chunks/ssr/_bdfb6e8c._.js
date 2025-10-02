@@ -466,6 +466,7 @@ function EmblaCarousel({ photos }) {
     const logSlidesInView = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((emblaApi)=>{
         const slidesInView = emblaApi.slidesInView();
         const slidesNotInView = emblaApi.slidesNotInView();
+        const allSlides = document.querySelectorAll(".embla__slide");
         slidesInView.forEach((slide)=>{
             const slideDiv = document.getElementById("slide" + slide);
             slideDiv.children[0].style.display = "block";
@@ -473,6 +474,17 @@ function EmblaCarousel({ photos }) {
         slidesNotInView.forEach((slide)=>{
             const slideDiv = document.getElementById("slide" + slide);
             slideDiv.children[0].style.display = "none";
+        });
+        allSlides.forEach((slideDiv, index)=>{
+            if (index > Math.max(...slidesInView) + 3) {
+                slideDiv.style.width = "0";
+                return;
+            }
+            if (index < Math.min(...slidesInView) - 3) {
+                slideDiv.style.width = "0";
+                return;
+            }
+            slideDiv.style.width = "100%";
         });
     }, []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
@@ -493,12 +505,12 @@ function EmblaCarousel({ photos }) {
                 className: "w-full h-full object-contain"
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-                lineNumber: 46,
+                lineNumber: 59,
                 columnNumber: 9
             }, this)
         }, photo.name, false, {
             fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-            lineNumber: 41,
+            lineNumber: 54,
             columnNumber: 7
         }, this);
     });
@@ -511,12 +523,12 @@ function EmblaCarousel({ photos }) {
             children: media
         }, void 0, false, {
             fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-            lineNumber: 58,
+            lineNumber: 71,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-        lineNumber: 57,
+        lineNumber: 70,
         columnNumber: 5
     }, this);
 }
