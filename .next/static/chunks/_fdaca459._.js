@@ -477,39 +477,18 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function EmblaCarousel({ photos }) {
+function EmblaCarousel({ photos, startingIndex }) {
     _s();
     const [emblaRef, emblaApi] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
+    const previousSlides = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
     const logSlidesInView = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "EmblaCarousel.useCallback[logSlidesInView]": (emblaApi)=>{
             const slidesInView = emblaApi.slidesInView();
-            const slidesNotInView = emblaApi.slidesNotInView();
-            const allSlides = document.querySelectorAll(".embla__slide");
-            slidesInView.forEach({
-                "EmblaCarousel.useCallback[logSlidesInView]": (slide)=>{
-                    const slideDiv = document.getElementById("slide" + slide);
-                    slideDiv.children[0].style.display = "block";
-                }
-            }["EmblaCarousel.useCallback[logSlidesInView]"]);
-            slidesNotInView.forEach({
-                "EmblaCarousel.useCallback[logSlidesInView]": (slide)=>{
-                    const slideDiv = document.getElementById("slide" + slide);
-                    slideDiv.children[0].style.display = "none";
-                }
-            }["EmblaCarousel.useCallback[logSlidesInView]"]);
-            allSlides.forEach({
-                "EmblaCarousel.useCallback[logSlidesInView]": (slideDiv, index)=>{
-                    if (index > Math.max(...slidesInView) + 3) {
-                        slideDiv.style.width = "0";
-                        return;
-                    }
-                    if (index < Math.min(...slidesInView) - 3) {
-                        slideDiv.style.width = "0";
-                        return;
-                    }
-                    slideDiv.style.width = "100%";
-                }
-            }["EmblaCarousel.useCallback[logSlidesInView]"]);
+            const container = document.getElementById("embla-container");
+            if (slidesInView.length === 3) {
+                console.log(slidesInView);
+                if (slidesInView[0] > 2) {}
+            }
         }
     }["EmblaCarousel.useCallback[logSlidesInView]"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
@@ -521,25 +500,27 @@ function EmblaCarousel({ photos }) {
         logSlidesInView
     ]);
     const media = photos.map((photo, index)=>{
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "embla__slide w-full h-full",
-            id: "slide" + index,
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                src: "/photos/" + photo.name,
-                alt: "slide",
-                width: 1000,
-                height: 1000,
-                className: "w-full h-full object-contain"
-            }, void 0, false, {
+        if (index > startingIndex - 5 && index < startingIndex + 5) {
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "embla__slide w-full h-full",
+                id: "slide" + index,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                    src: "/photos/" + photo.name,
+                    alt: "slide",
+                    width: 1000,
+                    height: 1000,
+                    className: "w-full h-full object-contain"
+                }, void 0, false, {
+                    fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
+                    lineNumber: 42,
+                    columnNumber: 11
+                }, this)
+            }, photo.name, false, {
                 fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-                lineNumber: 59,
+                lineNumber: 37,
                 columnNumber: 9
-            }, this)
-        }, photo.name, false, {
-            fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-            lineNumber: 54,
-            columnNumber: 7
-        }, this);
+            }, this);
+        }
     });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "embla",
@@ -547,19 +528,20 @@ function EmblaCarousel({ photos }) {
         id: "emblaGallery",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "embla__container h-full w-full",
+            id: "embla-container",
             children: media
         }, void 0, false, {
             fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-            lineNumber: 71,
+            lineNumber: 55,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-        lineNumber: 70,
+        lineNumber: 54,
         columnNumber: 5
     }, this);
 }
-_s(EmblaCarousel, "kqUhnOCbUQUK/yCYMRJukB0SwCM=", false, function() {
+_s(EmblaCarousel, "qZPO5+Wegs02Nx3PmjgMnAS87ho=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
     ];
@@ -640,7 +622,6 @@ function Gallery({ version }) {
         currentFilter
     ]);
     const gridLayout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$helpers$2f$gridPhotosArray$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["gridPhotosArray"])(photos, currentFilter, version);
-    console.log(gridLayout);
     const media = gridLayout.map((photosArr)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$GridCard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             photosArr: photosArr
@@ -678,7 +659,8 @@ function Gallery({ version }) {
                 return media[index];
             }),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$EmblaCarousel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["EmblaCarousel"], {
-                photos: photos
+                photos: photos,
+                startingIndex: 0
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
                 lineNumber: 100,

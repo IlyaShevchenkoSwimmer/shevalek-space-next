@@ -2,45 +2,27 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 import { Photo } from "./Gallery";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 interface emblaCarouselProps {
   photos: Photo[];
+  startingIndex: number;
 }
 
-export function EmblaCarousel({ photos }: emblaCarouselProps) {
+export function EmblaCarousel({ photos, startingIndex }: emblaCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel();
+  const previousSlides = useRef([]);
 
   const logSlidesInView = useCallback(
     (emblaApi: { slidesNotInView(): any; slidesInView: () => any }) => {
       const slidesInView = emblaApi.slidesInView();
-      const slidesNotInView = emblaApi.slidesNotInView();
-      const allSlides = document.querySelectorAll(".embla__slide");
-
-      slidesInView.forEach((slide: number) => {
-        const slideDiv = document.getElementById("slide" + slide);
-        ((slideDiv as HTMLElement).children[0] as HTMLElement).style.display =
-          "block";
-      });
-
-      slidesNotInView.forEach((slide: number) => {
-        const slideDiv = document.getElementById("slide" + slide);
-        ((slideDiv as HTMLElement).children[0] as HTMLElement).style.display =
-          "none";
-      });
-
-      allSlides.forEach((slideDiv, index) => {
-        if (index > Math.max(...slidesInView) + 3) {
-          (slideDiv as HTMLElement).style.width = "0";
-          return;
+      const container = document.getElementById("embla-container");
+      if (slidesInView.length === 3) {
+        console.log(slidesInView);
+        if (slidesInView[0] > 2) {
         }
-        if (index < Math.min(...slidesInView) - 3) {
-          (slideDiv as HTMLElement).style.width = "0";
-          return;
-        }
-        (slideDiv as HTMLElement).style.width = "100%";
-      });
+      }
     },
     []
   );
@@ -50,25 +32,29 @@ export function EmblaCarousel({ photos }: emblaCarouselProps) {
   }, [emblaApi, logSlidesInView]);
 
   const media = photos.map((photo, index) => {
-    return (
-      <div
-        className="embla__slide w-full h-full"
-        key={photo.name}
-        id={"slide" + index}
-      >
-        <Image
-          src={"/photos/" + photo.name}
-          alt="slide"
-          width={1000}
-          height={1000}
-          className="w-full h-full object-contain"
-        />
-      </div>
-    );
+    if (index > startingIndex - 5 && index < startingIndex + 5) {
+      return (
+        <div
+          className="embla__slide w-full h-full"
+          key={photo.name}
+          id={"slide" + index}
+        >
+          <Image
+            src={"/photos/" + photo.name}
+            alt="slide"
+            width={1000}
+            height={1000}
+            className="w-full h-full object-contain"
+          />
+        </div>
+      );
+    }
   });
   return (
     <div className="embla" ref={emblaRef} id="emblaGallery">
-      <div className="embla__container h-full w-full">{media}</div>
+      <div className="embla__container h-full w-full" id="embla-container">
+        {media}
+      </div>
     </div>
   );
 }

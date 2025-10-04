@@ -60,7 +60,7 @@ export default function Gallery({ version }: GalleryVersion) {
   }, [photos, currentFilter]);
 
   const gridLayout = gridPhotosArray(photos, currentFilter, version);
-  console.log(gridLayout);
+
   const media = gridLayout.map((photosArr) => {
     return <GridCard photosArr={photosArr} key={photosArr[0].name} />;
   });
@@ -97,7 +97,7 @@ export default function Gallery({ version }: GalleryVersion) {
         }
         return media[index];
       })}
-      <EmblaCarousel photos={photos} />
+      <EmblaCarousel photos={photos} startingIndex={0} />
     </section>
   );
 }
