@@ -462,14 +462,16 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 ;
 ;
 function EmblaCarousel({ photos, startingIndex }) {
-    const [emblaRef, emblaApi] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])();
-    const previousSlides = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])([]);
+    const [currentSlide, setCurrentSlide] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(startingIndex);
+    const [emblaRef, emblaApi] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])({
+        startIndex: currentSlide > 5 ? currentSlide - 5 : 0
+    });
+    const previousSlide = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(startingIndex);
     const logSlidesInView = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCallback"])((emblaApi)=>{
         const slidesInView = emblaApi.slidesInView();
         const container = document.getElementById("embla-container");
         if (slidesInView.length === 3) {
-            console.log(slidesInView);
-            if (slidesInView[0] > 2) {}
+            setCurrentSlide(slidesInView[1]);
         }
     }, []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
@@ -479,7 +481,7 @@ function EmblaCarousel({ photos, startingIndex }) {
         logSlidesInView
     ]);
     const media = photos.map((photo, index)=>{
-        if (index > startingIndex - 5 && index < startingIndex + 5) {
+        if (index > currentSlide - 5 && index < currentSlide + 5) {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "embla__slide w-full h-full",
                 id: "slide" + index,
@@ -491,12 +493,12 @@ function EmblaCarousel({ photos, startingIndex }) {
                     className: "w-full h-full object-contain"
                 }, void 0, false, {
                     fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-                    lineNumber: 42,
+                    lineNumber: 43,
                     columnNumber: 11
                 }, this)
             }, photo.name, false, {
                 fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 9
             }, this);
         }
@@ -511,12 +513,12 @@ function EmblaCarousel({ photos, startingIndex }) {
             children: media
         }, void 0, false, {
             fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-            lineNumber: 55,
+            lineNumber: 56,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-        lineNumber: 54,
+        lineNumber: 55,
         columnNumber: 5
     }, this);
 }

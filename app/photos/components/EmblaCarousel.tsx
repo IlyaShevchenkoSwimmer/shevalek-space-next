@@ -11,17 +11,18 @@ interface emblaCarouselProps {
 }
 
 export function EmblaCarousel({ photos, startingIndex }: emblaCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel();
-  const previousSlides = useRef([]);
+  const [currentSlide, setCurrentSlide] = useState(startingIndex);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    startIndex: currentSlide > 5 ? currentSlide - 5 : 0,
+  });
+  const previousSlide = useRef(startingIndex);
 
   const logSlidesInView = useCallback(
     (emblaApi: { slidesNotInView(): any; slidesInView: () => any }) => {
       const slidesInView = emblaApi.slidesInView();
       const container = document.getElementById("embla-container");
       if (slidesInView.length === 3) {
-        console.log(slidesInView);
-        if (slidesInView[0] > 2) {
-        }
+        setCurrentSlide(slidesInView[1]);
       }
     },
     []
@@ -32,7 +33,7 @@ export function EmblaCarousel({ photos, startingIndex }: emblaCarouselProps) {
   }, [emblaApi, logSlidesInView]);
 
   const media = photos.map((photo, index) => {
-    if (index > startingIndex - 5 && index < startingIndex + 5) {
+    if (index > currentSlide - 5 && index < currentSlide + 5) {
       return (
         <div
           className="embla__slide w-full h-full"

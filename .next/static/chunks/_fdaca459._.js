@@ -479,15 +479,17 @@ var _s = __turbopack_context__.k.signature();
 ;
 function EmblaCarousel({ photos, startingIndex }) {
     _s();
-    const [emblaRef, emblaApi] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])();
-    const previousSlides = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])([]);
+    const [currentSlide, setCurrentSlide] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(startingIndex);
+    const [emblaRef, emblaApi] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])({
+        startIndex: currentSlide > 5 ? currentSlide - 5 : 0
+    });
+    const previousSlide = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(startingIndex);
     const logSlidesInView = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCallback"])({
         "EmblaCarousel.useCallback[logSlidesInView]": (emblaApi)=>{
             const slidesInView = emblaApi.slidesInView();
             const container = document.getElementById("embla-container");
             if (slidesInView.length === 3) {
-                console.log(slidesInView);
-                if (slidesInView[0] > 2) {}
+                setCurrentSlide(slidesInView[1]);
             }
         }
     }["EmblaCarousel.useCallback[logSlidesInView]"], []);
@@ -500,7 +502,7 @@ function EmblaCarousel({ photos, startingIndex }) {
         logSlidesInView
     ]);
     const media = photos.map((photo, index)=>{
-        if (index > startingIndex - 5 && index < startingIndex + 5) {
+        if (index > currentSlide - 5 && index < currentSlide + 5) {
             return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "embla__slide w-full h-full",
                 id: "slide" + index,
@@ -512,12 +514,12 @@ function EmblaCarousel({ photos, startingIndex }) {
                     className: "w-full h-full object-contain"
                 }, void 0, false, {
                     fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-                    lineNumber: 42,
+                    lineNumber: 43,
                     columnNumber: 11
                 }, this)
             }, photo.name, false, {
                 fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-                lineNumber: 37,
+                lineNumber: 38,
                 columnNumber: 9
             }, this);
         }
@@ -532,16 +534,16 @@ function EmblaCarousel({ photos, startingIndex }) {
             children: media
         }, void 0, false, {
             fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-            lineNumber: 55,
+            lineNumber: 56,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/photos/components/EmblaCarousel.tsx",
-        lineNumber: 54,
+        lineNumber: 55,
         columnNumber: 5
     }, this);
 }
-_s(EmblaCarousel, "qZPO5+Wegs02Nx3PmjgMnAS87ho=", false, function() {
+_s(EmblaCarousel, "3dHuS+qNJNQ8F8pWIMfZpxD6zzM=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$embla$2d$carousel$2d$react$2f$esm$2f$embla$2d$carousel$2d$react$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"]
     ];
