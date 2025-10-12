@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import GalleryFilterButton from "./GalleryFilterButton";
 import { gridPhotosArray } from "@/app/helpers/gridPhotosArray";
 import GridCard from "./GridCard";
-import { EmblaCarousel } from "./EmblaCarousel";
+import Carousel from "./Carousel";
 
 export interface Photo {
   name: string;
@@ -66,38 +65,40 @@ export default function Gallery({ version }: GalleryVersion) {
   });
 
   return (
-    <section
-      id="gallery"
-      className="relative left-[2vw] w-[96vw] flex flex-wrap justify-center gap-6"
-    >
-      {version === "diplomas" ? (
-        <></>
-      ) : (
-        <GalleryFilterButton
-          photos={photos}
-          currentFilter={currentFilter}
-          setCurrentFilter={setCurrentFilter}
-        />
-      )}
+    <>
+      <section
+        id="gallery"
+        className="relative left-[2vw] w-[96vw] flex flex-wrap justify-center gap-6"
+      >
+        {version === "diplomas" ? (
+          <></>
+        ) : (
+          <GalleryFilterButton
+            photos={photos}
+            currentFilter={currentFilter}
+            setCurrentFilter={setCurrentFilter}
+          />
+        )}
 
-      {photos.map((photo, index) => {
-        if (photo.category === "Дипломы" && version !== "diplomas") {
-          return;
-        }
-        if (photo.category !== "Дипломы" && version === "diplomas") {
-          return;
-        }
-        if (currentFilter !== "") {
-          if (
-            photo.category !== currentFilter &&
-            photo.dateTime.slice(0, 4) !== currentFilter
-          ) {
+        {photos.map((photo, index) => {
+          if (photo.category === "Дипломы" && version !== "diplomas") {
             return;
           }
-        }
-        return media[index];
-      })}
-      <EmblaCarousel photos={photos} startingIndex={0} />
-    </section>
+          if (photo.category !== "Дипломы" && version === "diplomas") {
+            return;
+          }
+          if (currentFilter !== "") {
+            if (
+              photo.category !== currentFilter &&
+              photo.dateTime.slice(0, 4) !== currentFilter
+            ) {
+              return;
+            }
+          }
+          return media[index];
+        })}
+      </section>
+      <Carousel photos={photos} startingPhoto={0} />
+    </>
   );
 }

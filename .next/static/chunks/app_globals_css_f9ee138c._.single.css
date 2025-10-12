@@ -2,6 +2,7 @@
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
     *, :before, :after, ::backdrop {
+      --tw-scroll-snap-strictness: proximity;
       --tw-border-style: solid;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
@@ -300,38 +301,8 @@
     z-index: 50;
   }
 
-  .container {
-    width: 100%;
-  }
-
-  @media (width >= 40rem) {
-    .container {
-      max-width: 40rem;
-    }
-  }
-
-  @media (width >= 48rem) {
-    .container {
-      max-width: 48rem;
-    }
-  }
-
-  @media (width >= 64rem) {
-    .container {
-      max-width: 64rem;
-    }
-  }
-
-  @media (width >= 80rem) {
-    .container {
-      max-width: 80rem;
-    }
-  }
-
-  @media (width >= 96rem) {
-    .container {
-      max-width: 96rem;
-    }
+  .z-\[200\] {
+    z-index: 200;
   }
 
   .mb-5 {
@@ -388,6 +359,10 @@
 
   .h-\[60vh\] {
     height: 60vh;
+  }
+
+  .h-\[100vh\] {
+    height: 100vh;
   }
 
   .h-full {
@@ -466,12 +441,32 @@
     width: 100%;
   }
 
+  .min-w-\[100vw\] {
+    min-width: 100vw;
+  }
+
   .rotate-45 {
     rotate: 45deg;
   }
 
   .rotate-135 {
     rotate: 135deg;
+  }
+
+  .snap-x {
+    scroll-snap-type: x var(--tw-scroll-snap-strictness);
+  }
+
+  .snap-mandatory {
+    --tw-scroll-snap-strictness: mandatory;
+  }
+
+  .snap-center {
+    scroll-snap-align: center;
+  }
+
+  .snap-always {
+    scroll-snap-stop: always;
   }
 
   .grid-cols-6 {
@@ -520,6 +515,10 @@
 
   .gap-6 {
     gap: calc(var(--spacing) * 6);
+  }
+
+  .overflow-scroll {
+    overflow: scroll;
   }
 
   .rounded-2xl {
@@ -975,6 +974,12 @@
   .aside-hidden {
     left: -100vw;
   }
+}
+
+@property --tw-scroll-snap-strictness {
+  syntax: "*";
+  inherits: false;
+  initial-value: proximity;
 }
 
 @property --tw-border-style {
