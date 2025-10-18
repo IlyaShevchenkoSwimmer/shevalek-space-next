@@ -477,9 +477,54 @@ var _s = __turbopack_context__.k.signature();
 function Carousel({ photos, startingPhoto }) {
     _s();
     const carouselRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const currentPhotoRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(startingPhoto);
-    const [initialized, setInitialized] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [media, setMedia] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [carouselPhotos, setCarouselPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(photos);
+    const handleScroll = (event)=>{
+        const scrollLeft = Math.floor(event.target.scrollLeft);
+        const slideWidth = Math.floor(window.innerWidth);
+        if (scrollLeft % slideWidth === 0) {
+            const lastSlideID = event.target.children[event.target.children.length - 1].id;
+            const firstSlideID = event.target.children[0].id;
+            const lastSlide = Number(lastSlideID.slice(8));
+            const firstSlide = Number(firstSlideID.slice(8));
+            const currentSlide = scrollLeft / slideWidth + firstSlide;
+            console.log(carouselPhotos);
+            if (lastSlide - currentSlide === 1) {
+                const nextMedia = [
+                    ...media
+                ];
+                nextMedia.shift();
+                nextMedia.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
+                    id: "carousel" + (lastSlide + 1),
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        width: 1000,
+                        height: 1000,
+                        src: "/photos/" + photos[lastSlide + 1].name,
+                        alt: "photo",
+                        className: "w-full h-full object-contain",
+                        draggable: false
+                    }, void 0, false, {
+                        fileName: "[project]/app/photos/components/Carousel.tsx",
+                        lineNumber: 37,
+                        columnNumber: 13
+                    }, this)
+                }, photos[lastSlide + 1].name, false, {
+                    fileName: "[project]/app/photos/components/Carousel.tsx",
+                    lineNumber: 32,
+                    columnNumber: 11
+                }, this));
+                setMedia(nextMedia);
+            }
+        }
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Carousel.useEffect": ()=>{
+            if (carouselRef.current) {
+                carouselRef.current.addEventListener("scroll", handleScroll);
+            }
+        }
+    }["Carousel.useEffect"], []);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Carousel.useEffect": ()=>{
             if (carouselRef.current && photos.length > 0) {
@@ -500,119 +545,41 @@ function Carousel({ photos, startingPhoto }) {
                                 draggable: false
                             }, void 0, false, {
                                 fileName: "[project]/app/photos/components/Carousel.tsx",
-                                lineNumber: 29,
+                                lineNumber: 71,
                                 columnNumber: 13
                             }, this)
                         }, photo.name, false, {
                             fileName: "[project]/app/photos/components/Carousel.tsx",
-                            lineNumber: 24,
+                            lineNumber: 66,
                             columnNumber: 11
                         }, this);
                     }
                 }["Carousel.useEffect.newMedia"]);
                 setMedia(newMedia);
+                setCarouselPhotos(photos);
             }
         }
     }["Carousel.useEffect"], [
         photos
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Carousel.useEffect": ()=>{
-            if (carouselRef.current && media.length > 0) {
-                const lastSlideID = carouselRef.current.children[carouselRef.current.children.length - 1].id;
-                const firstSlideID = carouselRef.current.children[0].id;
-                const lastSlide = Number(lastSlideID.slice(8));
-                const firstSlide = Number(firstSlideID.slice(8));
-                console.log(firstSlide, lastSlide, currentPhotoRef.current);
-                carouselRef.current.scrollLeft = (currentPhotoRef.current - firstSlide + 2) * window.innerHeight;
-            }
-        }
-    }["Carousel.useEffect"], [
-        media
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "fixed w-[100vw] h-[100vh] top-0 left-0 z-[200]",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "w-[100vw] h-full flex overflow-scroll snap-x snap-mandatory",
             ref: carouselRef,
-            onScroll: (event)=>{
-                const scrollLeft = Math.floor(event.target.scrollLeft);
-                const slideWidth = Math.floor(window.innerWidth);
-                if (scrollLeft % slideWidth === 0) {
-                    const lastSlideID = event.target.children[event.target.children.length - 1].id;
-                    const firstSlideID = event.target.children[0].id;
-                    const lastSlide = Number(lastSlideID.slice(8));
-                    const firstSlide = Number(firstSlideID.slice(8));
-                    const currentSlide = scrollLeft / slideWidth + firstSlide;
-                    currentPhotoRef.current = currentSlide;
-                    if (lastSlide - currentSlide === 1 && lastSlide < photos.length - 1) {
-                        const nextMedia = [
-                            ...media
-                        ];
-                        nextMedia.shift();
-                        nextMedia.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
-                            id: "carousel" + (lastSlide + 1),
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                width: 1000,
-                                height: 1000,
-                                src: "/photos/" + photos[lastSlide + 1].name,
-                                alt: "photo",
-                                className: "w-full h-full object-contain",
-                                draggable: false
-                            }, void 0, false, {
-                                fileName: "[project]/app/photos/components/Carousel.tsx",
-                                lineNumber: 91,
-                                columnNumber: 19
-                            }, void 0)
-                        }, photos[lastSlide + 1].name, false, {
-                            fileName: "[project]/app/photos/components/Carousel.tsx",
-                            lineNumber: 86,
-                            columnNumber: 17
-                        }, void 0));
-                        setMedia(nextMedia);
-                    }
-                    if (currentSlide - firstSlide === 1 && firstSlide > 0) {
-                        const nextMedia = [
-                            ...media
-                        ];
-                        nextMedia.unshift(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
-                            id: "carousel" + (firstSlide - 1),
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                width: 1000,
-                                height: 1000,
-                                src: "/photos/" + photos[firstSlide - 1].name,
-                                alt: "photo",
-                                className: "w-full h-full object-contain",
-                                draggable: false
-                            }, void 0, false, {
-                                fileName: "[project]/app/photos/components/Carousel.tsx",
-                                lineNumber: 111,
-                                columnNumber: 19
-                            }, void 0)
-                        }, photos[firstSlide - 1].name, false, {
-                            fileName: "[project]/app/photos/components/Carousel.tsx",
-                            lineNumber: 106,
-                            columnNumber: 17
-                        }, void 0));
-                        setMedia(nextMedia);
-                    }
-                }
-            },
             children: media
         }, void 0, false, {
             fileName: "[project]/app/photos/components/Carousel.tsx",
-            lineNumber: 60,
+            lineNumber: 89,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/photos/components/Carousel.tsx",
-        lineNumber: 59,
+        lineNumber: 88,
         columnNumber: 5
     }, this);
 }
-_s(Carousel, "uGzFwzxs5oiaJxHx5+8JY5srgzE=");
+_s(Carousel, "6GnHa1OTXvRq1DHNmCJhG3q4KjQ=");
 _c = Carousel;
 var _c;
 __turbopack_context__.k.register(_c, "Carousel");
@@ -634,6 +601,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$helpers$2f$gridPhotosArray$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/helpers/gridPhotosArray.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$GridCard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/photos/components/GridCard.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$Carousel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/app/photos/components/Carousel.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$vm$2d$browserify$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/vm-browserify/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 "use client";
@@ -642,6 +610,8 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
+const PhotosContext = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$vm$2d$browserify$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createContext"])([]);
 function Gallery({ version }) {
     _s();
     const [photos, setPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -689,7 +659,7 @@ function Gallery({ version }) {
             photosArr: photosArr
         }, photosArr[0].name, false, {
             fileName: "[project]/app/photos/components/Gallery.tsx",
-            lineNumber: 57,
+            lineNumber: 59,
             columnNumber: 12
         }, this);
     });
@@ -705,7 +675,7 @@ function Gallery({ version }) {
                         setCurrentFilter: setCurrentFilter
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Gallery.tsx",
-                        lineNumber: 69,
+                        lineNumber: 71,
                         columnNumber: 11
                     }, this),
                     photos.map((photo, index)=>{
@@ -725,15 +695,15 @@ function Gallery({ version }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 62,
+                lineNumber: 64,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$Carousel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 photos: photos,
-                startingPhoto: 6
+                startingPhoto: 0
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 95,
+                lineNumber: 97,
                 columnNumber: 7
             }, this)
         ]
@@ -747,6 +717,169 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
+"[project]/node_modules/next/dist/compiled/vm-browserify/index.js [app-client] (ecmascript)": (function(__turbopack_context__) {
+
+var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
+{
+(function() {
+    var __webpack_modules__ = {
+        950: function(__unused_webpack_module, exports) {
+            var indexOf = function(e, t) {
+                if (e.indexOf) return e.indexOf(t);
+                else for(var r = 0; r < e.length; r++){
+                    if (e[r] === t) return r;
+                }
+                return -1;
+            };
+            var Object_keys = function(e) {
+                if (Object.keys) return Object.keys(e);
+                else {
+                    var t = [];
+                    for(var r in e)t.push(r);
+                    return t;
+                }
+            };
+            var forEach = function(e, t) {
+                if (e.forEach) return e.forEach(t);
+                else for(var r = 0; r < e.length; r++){
+                    t(e[r], r, e);
+                }
+            };
+            var defineProp = function() {
+                try {
+                    Object.defineProperty({}, "_", {});
+                    return function(e, t, r) {
+                        Object.defineProperty(e, t, {
+                            writable: true,
+                            enumerable: false,
+                            configurable: true,
+                            value: r
+                        });
+                    };
+                } catch (e) {
+                    return function(e, t, r) {
+                        e[t] = r;
+                    };
+                }
+            }();
+            var globals = [
+                "Array",
+                "Boolean",
+                "Date",
+                "Error",
+                "EvalError",
+                "Function",
+                "Infinity",
+                "JSON",
+                "Math",
+                "NaN",
+                "Number",
+                "Object",
+                "RangeError",
+                "ReferenceError",
+                "RegExp",
+                "String",
+                "SyntaxError",
+                "TypeError",
+                "URIError",
+                "decodeURI",
+                "decodeURIComponent",
+                "encodeURI",
+                "encodeURIComponent",
+                "escape",
+                "eval",
+                "isFinite",
+                "isNaN",
+                "parseFloat",
+                "parseInt",
+                "undefined",
+                "unescape"
+            ];
+            function Context() {}
+            Context.prototype = {};
+            var Script = exports.Script = function NodeScript(e) {
+                if (!(this instanceof Script)) return new Script(e);
+                this.code = e;
+            };
+            Script.prototype.runInContext = function(e) {
+                if (!(e instanceof Context)) {
+                    throw new TypeError("needs a 'context' argument.");
+                }
+                var t = document.createElement("iframe");
+                if (!t.style) t.style = {};
+                t.style.display = "none";
+                document.body.appendChild(t);
+                var r = t.contentWindow;
+                var n = r.eval, o = r.execScript;
+                if (!n && o) {
+                    o.call(r, "null");
+                    n = r.eval;
+                }
+                forEach(Object_keys(e), function(t) {
+                    r[t] = e[t];
+                });
+                forEach(globals, function(t) {
+                    if (e[t]) {
+                        r[t] = e[t];
+                    }
+                });
+                var c = Object_keys(r);
+                var i = n.call(r, this.code);
+                forEach(Object_keys(r), function(t) {
+                    if (t in e || indexOf(c, t) === -1) {
+                        e[t] = r[t];
+                    }
+                });
+                forEach(globals, function(t) {
+                    if (!(t in e)) {
+                        defineProp(e, t, r[t]);
+                    }
+                });
+                document.body.removeChild(t);
+                return i;
+            };
+            Script.prototype.runInThisContext = function() {
+                return eval(this.code);
+            };
+            Script.prototype.runInNewContext = function(e) {
+                var t = Script.createContext(e);
+                var r = this.runInContext(t);
+                if (e) {
+                    forEach(Object_keys(t), function(r) {
+                        e[r] = t[r];
+                    });
+                }
+                return r;
+            };
+            forEach(Object_keys(Script.prototype), function(e) {
+                exports[e] = Script[e] = function(t) {
+                    var r = Script(t);
+                    return r[e].apply(r, [].slice.call(arguments, 1));
+                };
+            });
+            exports.isContext = function(e) {
+                return e instanceof Context;
+            };
+            exports.createScript = function(e) {
+                return exports.Script(e);
+            };
+            exports.createContext = Script.createContext = function(e) {
+                var t = new Context;
+                if (typeof e === "object") {
+                    forEach(Object_keys(e), function(r) {
+                        t[r] = e[r];
+                    });
+                }
+                return t;
+            };
+        }
+    };
+    if (typeof __nccwpck_require__ !== "undefined") __nccwpck_require__.ab = __dirname + "/";
+    var __webpack_exports__ = {};
+    __webpack_modules__[950](0, __webpack_exports__);
+    module.exports = __webpack_exports__;
+})();
+}}),
 }]);
 
-//# sourceMappingURL=app_1b110df4._.js.map
+//# sourceMappingURL=_0313a4bc._.js.map

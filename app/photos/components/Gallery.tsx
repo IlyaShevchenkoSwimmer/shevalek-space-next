@@ -5,6 +5,7 @@ import GalleryFilterButton from "./GalleryFilterButton";
 import { gridPhotosArray } from "@/app/helpers/gridPhotosArray";
 import GridCard from "./GridCard";
 import Carousel from "./Carousel";
+import { createContext } from "vm";
 
 export interface Photo {
   name: string;
@@ -16,8 +17,6 @@ export interface Photo {
 interface GalleryVersion {
   version: string;
 }
-
-const emblaClasses = ["embla", "embla__container", "embla__slide"];
 
 export default function Gallery({ version }: GalleryVersion) {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -35,17 +34,11 @@ export default function Gallery({ version }: GalleryVersion) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (
-            entry.isIntersecting &&
-            !emblaClasses.includes(entry.target.classList[0])
-          ) {
+          if (entry.isIntersecting) {
             (entry.target as HTMLElement).style.scale = "1";
           }
 
-          if (
-            !entry.isIntersecting &&
-            !emblaClasses.includes(entry.target.classList[0])
-          ) {
+          if (!entry.isIntersecting) {
             (entry.target as HTMLElement).style.scale = "0.3";
           }
         });
@@ -98,7 +91,8 @@ export default function Gallery({ version }: GalleryVersion) {
           return media[index];
         })}
       </section>
-      <Carousel photos={photos} startingPhoto={0} />
+
+      <Carousel photos={photos} startingPhoto={6} />
     </>
   );
 }
