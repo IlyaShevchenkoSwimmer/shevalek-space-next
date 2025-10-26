@@ -1,8 +1,11 @@
+"use client";
+import { Dispatch, SetStateAction } from "react";
 import { Photo } from "./Gallery";
 import Image from "next/image";
 
 interface GridCardProps {
   photosArr: Photo[];
+  setCarouselPhotoIndex: Dispatch<SetStateAction<number>>;
 }
 
 interface gridCoords {
@@ -11,7 +14,10 @@ interface gridCoords {
   gridRowStart: number;
   gridRowEnd: number;
 }
-export default function GridCard({ photosArr }: GridCardProps) {
+export default function GridCard({
+  photosArr,
+  setCarouselPhotoIndex,
+}: GridCardProps) {
   const gridCoordsArr: gridCoords[] = getGridCoordsArr(photosArr);
 
   const media = photosArr.map((photo, index) => {
@@ -20,6 +26,11 @@ export default function GridCard({ photosArr }: GridCardProps) {
         className="rounded-3xl shadow-2xl transition-all ease-in-out duration-500"
         style={gridCoordsArr[index]}
         key={photo.name}
+        onClick={() => {
+          const carousel = document.getElementById("carouselSection");
+          (carousel as HTMLElement).style.visibility = "visible";
+          setCarouselPhotoIndex(index);
+        }}
       >
         <Image
           width={1000}

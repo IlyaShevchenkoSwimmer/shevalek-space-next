@@ -216,14 +216,20 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [app-client] (ecmascript)");
+"use client";
 ;
 ;
-function GridCard({ photosArr }) {
+function GridCard({ photosArr, setCarouselPhotoIndex }) {
     const gridCoordsArr = getGridCoordsArr(photosArr);
     const media = photosArr.map((photo, index)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "rounded-3xl shadow-2xl transition-all ease-in-out duration-500",
             style: gridCoordsArr[index],
+            onClick: ()=>{
+                const carousel = document.getElementById("carouselSection");
+                carousel.style.visibility = "visible";
+                setCarouselPhotoIndex(index);
+            },
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 width: 1000,
                 height: 1000,
@@ -232,12 +238,12 @@ function GridCard({ photosArr }) {
                 className: "w-full h-full object-cover rounded-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/GridCard.tsx",
-                lineNumber: 24,
+                lineNumber: 35,
                 columnNumber: 9
             }, this)
         }, photo.name, false, {
             fileName: "[project]/app/photos/components/GridCard.tsx",
-            lineNumber: 19,
+            lineNumber: 25,
             columnNumber: 7
         }, this);
     });
@@ -246,7 +252,7 @@ function GridCard({ photosArr }) {
         children: media
     }, void 0, false, {
         fileName: "[project]/app/photos/components/GridCard.tsx",
-        lineNumber: 35,
+        lineNumber: 46,
         columnNumber: 5
     }, this);
 }
@@ -477,130 +483,64 @@ var _s = __turbopack_context__.k.signature();
 function Carousel({ photos, startingPhoto }) {
     _s();
     const carouselRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
-    const currentPhotoRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(startingPhoto);
-    const [initialized, setInitialized] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [media, setMedia] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [slideInView, setSlideInView] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(startingPhoto);
+    const carouselMedia = photos.map((photo, index)=>{
+        if (!(index > slideInView - 5 && index < slideInView + 5)) {
+            return;
+        }
+        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
+            id: "carousel" + index,
+            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                width: 1000,
+                height: 1000,
+                src: "/photos/" + photo.name,
+                alt: "photo",
+                className: "w-full h-full object-contain",
+                draggable: false
+            }, void 0, false, {
+                fileName: "[project]/app/photos/components/Carousel.tsx",
+                lineNumber: 33,
+                columnNumber: 9
+            }, this)
+        }, photo.name, false, {
+            fileName: "[project]/app/photos/components/Carousel.tsx",
+            lineNumber: 28,
+            columnNumber: 7
+        }, this);
+    });
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Carousel.useEffect": ()=>{
             if (carouselRef.current && photos.length > 0) {
-                const newMedia = photos.map({
-                    "Carousel.useEffect.newMedia": (photo, index)=>{
-                        if (!(index > startingPhoto - 5 && index < startingPhoto + 5)) {
-                            return;
-                        }
-                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
-                            id: "carousel" + index,
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                width: 1000,
-                                height: 1000,
-                                src: "/photos/" + photo.name,
-                                alt: "photo",
-                                className: "w-full h-full object-contain",
-                                draggable: false
-                            }, void 0, false, {
-                                fileName: "[project]/app/photos/components/Carousel.tsx",
-                                lineNumber: 29,
-                                columnNumber: 13
-                            }, this)
-                        }, photo.name, false, {
-                            fileName: "[project]/app/photos/components/Carousel.tsx",
-                            lineNumber: 24,
-                            columnNumber: 11
-                        }, this);
-                    }
-                }["Carousel.useEffect.newMedia"]);
-                setMedia(newMedia);
-            }
-        }
-    }["Carousel.useEffect"], [
-        photos
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Carousel.useEffect": ()=>{
-            if (carouselRef.current && media.length > 0) {
-                const lastSlideID = carouselRef.current.children[carouselRef.current.children.length - 1].id;
                 const firstSlideID = carouselRef.current.children[0].id;
-                const lastSlide = Number(lastSlideID.slice(8));
                 const firstSlide = Number(firstSlideID.slice(8));
-                console.log(firstSlide, lastSlide, currentPhotoRef.current);
-                carouselRef.current.scrollLeft = (currentPhotoRef.current - firstSlide + 2) * window.innerHeight;
+                carouselRef.current.scrollLeft = (slideInView - firstSlide) * window.innerWidth;
             }
         }
     }["Carousel.useEffect"], [
-        media
+        slideInView,
+        carouselMedia
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: "fixed w-[100vw] h-[100vh] top-0 left-0 z-[200]",
+        id: "carouselSection",
+        style: {
+            visibility: "hidden"
+        },
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "w-[100vw] h-full flex overflow-scroll snap-x snap-mandatory",
             ref: carouselRef,
             onScroll: (event)=>{
-                const scrollLeft = Math.floor(event.target.scrollLeft);
-                const slideWidth = Math.floor(window.innerWidth);
+                const scrollLeft = event.target.scrollLeft;
+                const slideWidth = window.innerWidth;
                 if (scrollLeft % slideWidth === 0) {
-                    const lastSlideID = event.target.children[event.target.children.length - 1].id;
                     const firstSlideID = event.target.children[0].id;
-                    const lastSlide = Number(lastSlideID.slice(8));
                     const firstSlide = Number(firstSlideID.slice(8));
                     const currentSlide = scrollLeft / slideWidth + firstSlide;
-                    currentPhotoRef.current = currentSlide;
-                    if (lastSlide - currentSlide === 1 && lastSlide < photos.length - 1) {
-                        const nextMedia = [
-                            ...media
-                        ];
-                        nextMedia.shift();
-                        nextMedia.push(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
-                            id: "carousel" + (lastSlide + 1),
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                width: 1000,
-                                height: 1000,
-                                src: "/photos/" + photos[lastSlide + 1].name,
-                                alt: "photo",
-                                className: "w-full h-full object-contain",
-                                draggable: false
-                            }, void 0, false, {
-                                fileName: "[project]/app/photos/components/Carousel.tsx",
-                                lineNumber: 91,
-                                columnNumber: 19
-                            }, void 0)
-                        }, photos[lastSlide + 1].name, false, {
-                            fileName: "[project]/app/photos/components/Carousel.tsx",
-                            lineNumber: 86,
-                            columnNumber: 17
-                        }, void 0));
-                        setMedia(nextMedia);
-                    }
-                    if (currentSlide - firstSlide === 1 && firstSlide > 0) {
-                        const nextMedia = [
-                            ...media
-                        ];
-                        nextMedia.unshift(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
-                            id: "carousel" + (firstSlide - 1),
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                                width: 1000,
-                                height: 1000,
-                                src: "/photos/" + photos[firstSlide - 1].name,
-                                alt: "photo",
-                                className: "w-full h-full object-contain",
-                                draggable: false
-                            }, void 0, false, {
-                                fileName: "[project]/app/photos/components/Carousel.tsx",
-                                lineNumber: 111,
-                                columnNumber: 19
-                            }, void 0)
-                        }, photos[firstSlide - 1].name, false, {
-                            fileName: "[project]/app/photos/components/Carousel.tsx",
-                            lineNumber: 106,
-                            columnNumber: 17
-                        }, void 0));
-                        setMedia(nextMedia);
-                    }
+                    setSlideInView(currentSlide);
                 }
             },
-            children: media
+            children: carouselMedia
         }, void 0, false, {
             fileName: "[project]/app/photos/components/Carousel.tsx",
             lineNumber: 60,
@@ -608,11 +548,11 @@ function Carousel({ photos, startingPhoto }) {
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/photos/components/Carousel.tsx",
-        lineNumber: 59,
+        lineNumber: 55,
         columnNumber: 5
     }, this);
 }
-_s(Carousel, "uGzFwzxs5oiaJxHx5+8JY5srgzE=");
+_s(Carousel, "ZlY7Q7NdLJEIWH6E27aMT5NEEkQ=");
 _c = Carousel;
 var _c;
 __turbopack_context__.k.register(_c, "Carousel");
@@ -646,6 +586,7 @@ function Gallery({ version }) {
     _s();
     const [photos, setPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [currentFilter, setCurrentFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [carouselPhotoIndex, setCarouselPhotoIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Gallery.useEffect": ()=>{
             fetch("/api/photos/refresh");
@@ -686,13 +627,29 @@ function Gallery({ version }) {
     const gridLayout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$helpers$2f$gridPhotosArray$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["gridPhotosArray"])(photos, currentFilter, version);
     const media = gridLayout.map((photosArr)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$GridCard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-            photosArr: photosArr
+            photosArr: photosArr,
+            setCarouselPhotoIndex: setCarouselPhotoIndex
         }, photosArr[0].name, false, {
             fileName: "[project]/app/photos/components/Gallery.tsx",
-            lineNumber: 57,
-            columnNumber: 12
+            lineNumber: 59,
+            columnNumber: 7
         }, this);
     });
+    const carouselPhotos = [];
+    for (let photo of photos){
+        if (photo.category === "Дипломы" && version !== "diplomas") {
+            continue;
+        }
+        if (photo.category !== "Дипломы" && version === "diplomas") {
+            continue;
+        }
+        if (currentFilter !== "") {
+            if (photo.category !== currentFilter && photo.dateTime.slice(0, 4) !== currentFilter) {
+                continue;
+            }
+        }
+        carouselPhotos.push(photo);
+    }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -705,7 +662,7 @@ function Gallery({ version }) {
                         setCurrentFilter: setCurrentFilter
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Gallery.tsx",
-                        lineNumber: 69,
+                        lineNumber: 95,
                         columnNumber: 11
                     }, this),
                     photos.map((photo, index)=>{
@@ -725,21 +682,21 @@ function Gallery({ version }) {
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 62,
+                lineNumber: 88,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$Carousel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                photos: photos,
-                startingPhoto: 6
+                photos: carouselPhotos,
+                startingPhoto: carouselPhotoIndex
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 95,
+                lineNumber: 121,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(Gallery, "zzbfjM6tEtKOG/cbJSLClyuzhfk=");
+_s(Gallery, "5zwEeikOojmrQQDTrVohTKJ3dUI=");
 _c = Gallery;
 var _c;
 __turbopack_context__.k.register(_c, "Gallery");

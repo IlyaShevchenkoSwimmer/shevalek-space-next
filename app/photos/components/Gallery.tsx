@@ -21,6 +21,7 @@ interface GalleryVersion {
 export default function Gallery({ version }: GalleryVersion) {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>("");
+  const [carouselPhotoIndex, setCarouselPhotoIndex] = useState(0);
   useEffect(() => {
     fetch("/api/photos/refresh");
     fetch("/api/photos")
@@ -54,8 +55,33 @@ export default function Gallery({ version }: GalleryVersion) {
   const gridLayout = gridPhotosArray(photos, currentFilter, version);
 
   const media = gridLayout.map((photosArr) => {
-    return <GridCard photosArr={photosArr} key={photosArr[0].name} />;
+    return (
+      <GridCard
+        photosArr={photosArr}
+        key={photosArr[0].name}
+        setCarouselPhotoIndex={setCarouselPhotoIndex}
+      />
+    );
   });
+
+  const carouselPhotos = [];
+  for (let photo of photos) {
+    if (photo.category === "Дипломы" && version !== "diplomas") {
+      continue;
+    }
+    if (photo.category !== "Дипломы" && version === "diplomas") {
+      continue;
+    }
+    if (currentFilter !== "") {
+      if (
+        photo.category !== currentFilter &&
+        photo.dateTime.slice(0, 4) !== currentFilter
+      ) {
+        continue;
+      }
+    }
+    carouselPhotos.push(photo);
+  }
 
   return (
     <>
@@ -92,7 +118,7 @@ export default function Gallery({ version }: GalleryVersion) {
         })}
       </section>
 
-      <Carousel photos={photos} startingPhoto={6} />
+      <Carousel photos={carouselPhotos} startingPhoto={carouselPhotoIndex} />
     </>
   );
 }
