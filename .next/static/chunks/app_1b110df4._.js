@@ -219,17 +219,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 "use client";
 ;
 ;
-function GridCard({ photosArr, setCarouselPhotoIndex }) {
+function GridCard({ photosArr }) {
     const gridCoordsArr = getGridCoordsArr(photosArr);
     const media = photosArr.map((photo, index)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "rounded-3xl shadow-2xl transition-all ease-in-out duration-500",
             style: gridCoordsArr[index],
-            onClick: ()=>{
-                const carousel = document.getElementById("carouselSection");
-                carousel.style.visibility = "visible";
-                setCarouselPhotoIndex(index);
-            },
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 width: 1000,
                 height: 1000,
@@ -238,21 +233,21 @@ function GridCard({ photosArr, setCarouselPhotoIndex }) {
                 className: "w-full h-full object-cover rounded-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/GridCard.tsx",
-                lineNumber: 35,
+                lineNumber: 26,
                 columnNumber: 9
             }, this)
         }, photo.name, false, {
             fileName: "[project]/app/photos/components/GridCard.tsx",
-            lineNumber: 25,
+            lineNumber: 21,
             columnNumber: 7
         }, this);
     });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("article", {
-        className: "w-full max-h-[60vh] grid grid-cols-6 grid-rows-2 gap-6",
+        className: "w-full max-h-[40vh] md:max-h-[80vh] lg:max-h-[120vh] lg:max-w-[1024px] grid grid-cols-12 grid-rows-2 gap-6",
         children: media
     }, void 0, false, {
         fileName: "[project]/app/photos/components/GridCard.tsx",
-        lineNumber: 46,
+        lineNumber: 37,
         columnNumber: 5
     }, this);
 }
@@ -262,7 +257,7 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 7,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 3
             }
@@ -272,13 +267,13 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 4,
+                gridColumnEnd: 7,
                 gridRowStart: 1,
                 gridRowEnd: 3
             },
             {
-                gridColumnStart: 4,
-                gridColumnEnd: 7,
+                gridColumnStart: 7,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 3
             }
@@ -288,19 +283,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 3,
-                gridRowStart: 1,
-                gridRowEnd: 3
-            },
-            {
-                gridColumnStart: 3,
                 gridColumnEnd: 5,
                 gridRowStart: 1,
                 gridRowEnd: 3
             },
             {
                 gridColumnStart: 5,
-                gridColumnEnd: 7,
+                gridColumnEnd: 9,
+                gridRowStart: 1,
+                gridRowEnd: 3
+            },
+            {
+                gridColumnStart: 9,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 3
             }
@@ -310,19 +305,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 3,
+                gridColumnEnd: 6,
                 gridRowStart: 1,
                 gridRowEnd: 3
             },
             {
-                gridColumnStart: 3,
-                gridColumnEnd: 7,
+                gridColumnStart: 6,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 2
             },
             {
-                gridColumnStart: 3,
-                gridColumnEnd: 7,
+                gridColumnStart: 6,
+                gridColumnEnd: 13,
                 gridRowStart: 2,
                 gridRowEnd: 3
             }
@@ -332,19 +327,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 5,
+                gridColumnEnd: 8,
                 gridRowStart: 1,
                 gridRowEnd: 2
             },
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 5,
+                gridColumnEnd: 8,
                 gridRowStart: 2,
                 gridRowEnd: 3
             },
             {
-                gridColumnStart: 5,
-                gridColumnEnd: 7,
+                gridColumnStart: 8,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 3
             }
@@ -354,19 +349,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 5,
+                gridColumnEnd: 8,
                 gridRowStart: 1,
                 gridRowEnd: 2
             },
             {
-                gridColumnStart: 5,
-                gridColumnEnd: 7,
+                gridColumnStart: 8,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 3
             },
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 5,
+                gridColumnEnd: 8,
                 gridRowStart: 2,
                 gridRowEnd: 3
             }
@@ -376,19 +371,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 7,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 2
             },
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 4,
+                gridColumnEnd: 7,
                 gridRowStart: 2,
                 gridRowEnd: 3
             },
             {
-                gridColumnStart: 4,
-                gridColumnEnd: 7,
+                gridColumnStart: 7,
+                gridColumnEnd: 13,
                 gridRowStart: 2,
                 gridRowEnd: 3
             }
@@ -398,19 +393,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 4,
+                gridColumnEnd: 7,
                 gridRowStart: 1,
                 gridRowEnd: 2
             },
             {
-                gridColumnStart: 4,
-                gridColumnEnd: 7,
+                gridColumnStart: 7,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 2
             },
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 7,
+                gridColumnEnd: 13,
                 gridRowStart: 2,
                 gridRowEnd: 3
             }
@@ -420,19 +415,19 @@ function getGridCoordsArr(photosArr) {
         return [
             {
                 gridColumnStart: 1,
-                gridColumnEnd: 2,
+                gridColumnEnd: 4,
                 gridRowStart: 1,
                 gridRowEnd: 3
             },
             {
-                gridColumnStart: 2,
-                gridColumnEnd: 6,
+                gridColumnStart: 4,
+                gridColumnEnd: 10,
                 gridRowStart: 1,
                 gridRowEnd: 3
             },
             {
-                gridColumnStart: 6,
-                gridColumnEnd: 7,
+                gridColumnStart: 10,
+                gridColumnEnd: 13,
                 gridRowStart: 1,
                 gridRowEnd: 3
             }
@@ -441,19 +436,19 @@ function getGridCoordsArr(photosArr) {
     return [
         {
             gridColumnStart: 1,
-            gridColumnEnd: 3,
-            gridRowStart: 1,
-            gridRowEnd: 3
-        },
-        {
-            gridColumnStart: 3,
             gridColumnEnd: 5,
             gridRowStart: 1,
             gridRowEnd: 3
         },
         {
             gridColumnStart: 5,
-            gridColumnEnd: 7,
+            gridColumnEnd: 9,
+            gridRowStart: 1,
+            gridRowEnd: 3
+        },
+        {
+            gridColumnStart: 9,
+            gridColumnEnd: 13,
             gridRowStart: 1,
             gridRowEnd: 3
         }
@@ -478,12 +473,20 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+"use client";
 ;
 ;
-function Carousel({ photos, startingPhoto }) {
+function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibility }) {
     _s();
     const carouselRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const [slideInView, setSlideInView] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(startingPhoto);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "Carousel.useEffect": ()=>{
+            setSlideInView(startingPhoto);
+        }
+    }["Carousel.useEffect"], [
+        startingPhoto
+    ]);
     const carouselMedia = photos.map((photo, index)=>{
         if (!(index > slideInView - 5 && index < slideInView + 5)) {
             return;
@@ -492,6 +495,7 @@ function Carousel({ photos, startingPhoto }) {
             className: "w-[100vw] min-w-[100vw] h-full snap-center snap-always",
             id: "carousel" + index,
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: photo.name,
                 width: 1000,
                 height: 1000,
                 src: "/photos/" + photo.name,
@@ -500,12 +504,12 @@ function Carousel({ photos, startingPhoto }) {
                 draggable: false
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Carousel.tsx",
-                lineNumber: 33,
+                lineNumber: 46,
                 columnNumber: 9
             }, this)
         }, photo.name, false, {
             fileName: "[project]/app/photos/components/Carousel.tsx",
-            lineNumber: 28,
+            lineNumber: 41,
             columnNumber: 7
         }, this);
     });
@@ -522,37 +526,65 @@ function Carousel({ photos, startingPhoto }) {
         carouselMedia
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "fixed w-[100vw] h-[100vh] top-0 left-0 z-[200]",
+        className: "fixed w-[100vw] h-[100vh] top-0 left-0 z-[200] bg-black",
         id: "carouselSection",
         style: {
-            visibility: "hidden"
+            visibility: carouselVisibility
         },
-        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "w-[100vw] h-full flex overflow-scroll snap-x snap-mandatory",
-            ref: carouselRef,
-            onScroll: (event)=>{
-                const scrollLeft = event.target.scrollLeft;
-                const slideWidth = window.innerWidth;
-                if (scrollLeft % slideWidth === 0) {
-                    const firstSlideID = event.target.children[0].id;
-                    const firstSlide = Number(firstSlideID.slice(8));
-                    const currentSlide = scrollLeft / slideWidth + firstSlide;
-                    setSlideInView(currentSlide);
-                }
-            },
-            children: carouselMedia
-        }, void 0, false, {
-            fileName: "[project]/app/photos/components/Carousel.tsx",
-            lineNumber: 60,
-            columnNumber: 7
-        }, this)
-    }, void 0, false, {
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "no-scrollbar w-[100vw] h-full flex overflow-scroll snap-x snap-mandatory",
+                ref: carouselRef,
+                onScroll: (event)=>{
+                    const scrollLeft = event.target.scrollLeft;
+                    const slideWidth = window.innerWidth;
+                    if (scrollLeft % slideWidth === 0) {
+                        const firstSlideID = event.target.children[0].id;
+                        const firstSlide = Number(firstSlideID.slice(8));
+                        const currentSlide = scrollLeft / slideWidth + firstSlide;
+                        setSlideInView(currentSlide);
+                    }
+                },
+                children: carouselMedia
+            }, void 0, false, {
+                fileName: "[project]/app/photos/components/Carousel.tsx",
+                lineNumber: 74,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "absolute top-10 right-10 w-10 h-10 flex justify-center items-center",
+                onClick: ()=>{
+                    setCarouselVisibility("hidden");
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute bg-amber-50 w-full h-0.5 rotate-45"
+                    }, void 0, false, {
+                        fileName: "[project]/app/photos/components/Carousel.tsx",
+                        lineNumber: 97,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute bg-amber-50 w-full h-0.5 rotate-135"
+                    }, void 0, false, {
+                        fileName: "[project]/app/photos/components/Carousel.tsx",
+                        lineNumber: 98,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/app/photos/components/Carousel.tsx",
+                lineNumber: 91,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "[project]/app/photos/components/Carousel.tsx",
-        lineNumber: 55,
+        lineNumber: 69,
         columnNumber: 5
     }, this);
 }
-_s(Carousel, "ZlY7Q7NdLJEIWH6E27aMT5NEEkQ=");
+_s(Carousel, "HU0m4HTI0dxDxVUFcm7WLYQ++0o=");
 _c = Carousel;
 var _c;
 __turbopack_context__.k.register(_c, "Carousel");
@@ -586,7 +618,8 @@ function Gallery({ version }) {
     _s();
     const [photos, setPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [currentFilter, setCurrentFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
-    const [carouselPhotoIndex, setCarouselPhotoIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [startingPhoto, setStartingPhoto] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [carouselVisibility, setCarouselVisibility] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("hidden");
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Gallery.useEffect": ()=>{
             fetch("/api/photos/refresh");
@@ -625,14 +658,14 @@ function Gallery({ version }) {
         currentFilter
     ]);
     const gridLayout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$helpers$2f$gridPhotosArray$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["gridPhotosArray"])(photos, currentFilter, version);
+    console.log(photos.length, gridLayout);
     const media = gridLayout.map((photosArr)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$GridCard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-            photosArr: photosArr,
-            setCarouselPhotoIndex: setCarouselPhotoIndex
+            photosArr: photosArr
         }, photosArr[0].name, false, {
             fileName: "[project]/app/photos/components/Gallery.tsx",
-            lineNumber: 59,
-            columnNumber: 7
+            lineNumber: 63,
+            columnNumber: 12
         }, this);
     });
     const carouselPhotos = [];
@@ -650,11 +683,25 @@ function Gallery({ version }) {
         }
         carouselPhotos.push(photo);
     }
+    console.log(carouselPhotos.length);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
                 id: "gallery",
                 className: "relative left-[2vw] w-[96vw] flex flex-wrap justify-center gap-6",
+                onClick: (event)=>{
+                    const galleryWrapper = document.getElementById("gallery");
+                    let counter = 0;
+                    for (let elem of galleryWrapper.children){
+                        for (let photoDiv of elem.children){
+                            if (event.target === photoDiv.children[0]) {
+                                setStartingPhoto(counter - 1);
+                                setCarouselVisibility("visible");
+                            }
+                            counter++;
+                        }
+                    }
+                },
                 children: [
                     version === "diplomas" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {}, void 0, false) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$GalleryFilterButton$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                         photos: photos,
@@ -662,7 +709,7 @@ function Gallery({ version }) {
                         setCurrentFilter: setCurrentFilter
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Gallery.tsx",
-                        lineNumber: 95,
+                        lineNumber: 111,
                         columnNumber: 11
                     }, this),
                     photos.map((photo, index)=>{
@@ -687,16 +734,18 @@ function Gallery({ version }) {
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$Carousel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 photos: carouselPhotos,
-                startingPhoto: carouselPhotoIndex
+                startingPhoto: startingPhoto,
+                carouselVisibility: carouselVisibility,
+                setCarouselVisibility: setCarouselVisibility
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 121,
+                lineNumber: 137,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(Gallery, "5zwEeikOojmrQQDTrVohTKJ3dUI=");
+_s(Gallery, "vy4j7WG3kR6QC5DLMV/I0N9livI=");
 _c = Gallery;
 var _c;
 __turbopack_context__.k.register(_c, "Gallery");

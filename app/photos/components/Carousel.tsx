@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import { Photo } from "./Gallery";
@@ -14,11 +16,22 @@ import {
 interface CarouselProps {
   photos: Photo[];
   startingPhoto: number;
+  carouselVisibility: "hidden" | "visible";
+  setCarouselVisibility: Dispatch<SetStateAction<"hidden" | "visible">>;
 }
 
-export default function Carousel({ photos, startingPhoto }: CarouselProps) {
+export default function Carousel({
+  photos,
+  startingPhoto,
+  carouselVisibility,
+  setCarouselVisibility,
+}: CarouselProps) {
   const carouselRef = useRef(null);
   const [slideInView, setSlideInView] = useState(startingPhoto);
+
+  useEffect(() => {
+    setSlideInView(startingPhoto);
+  }, [startingPhoto]);
 
   const carouselMedia = photos.map((photo, index) => {
     if (!(index > slideInView - 5 && index < slideInView + 5)) {
@@ -31,6 +44,7 @@ export default function Carousel({ photos, startingPhoto }: CarouselProps) {
         key={photo.name}
       >
         <Image
+          id={photo.name}
           width={1000}
           height={1000}
           src={"/photos/" + photo.name}
@@ -53,12 +67,12 @@ export default function Carousel({ photos, startingPhoto }: CarouselProps) {
 
   return (
     <section
-      className="fixed w-[100vw] h-[100vh] top-0 left-0 z-[200]"
+      className="fixed w-[100vw] h-[100vh] top-0 left-0 z-[200] bg-black"
       id="carouselSection"
-      style={{ visibility: "hidden" }}
+      style={{ visibility: carouselVisibility }}
     >
       <div
-        className="w-[100vw] h-full flex overflow-scroll snap-x snap-mandatory"
+        className="no-scrollbar w-[100vw] h-full flex overflow-scroll snap-x snap-mandatory"
         ref={carouselRef}
         onScroll={(event: React.UIEvent<HTMLElement>) => {
           const scrollLeft = (event.target as HTMLElement).scrollLeft;
@@ -73,6 +87,15 @@ export default function Carousel({ photos, startingPhoto }: CarouselProps) {
         }}
       >
         {carouselMedia}
+      </div>
+      <div
+        className="absolute top-10 right-10 w-10 h-10 flex justify-center items-center"
+        onClick={() => {
+          setCarouselVisibility("hidden");
+        }}
+      >
+        <div className="absolute bg-amber-50 w-full h-0.5 rotate-45"></div>
+        <div className="absolute bg-amber-50 w-full h-0.5 rotate-135"></div>
       </div>
     </section>
   );

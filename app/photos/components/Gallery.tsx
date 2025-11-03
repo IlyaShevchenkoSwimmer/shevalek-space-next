@@ -21,7 +21,11 @@ interface GalleryVersion {
 export default function Gallery({ version }: GalleryVersion) {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [currentFilter, setCurrentFilter] = useState<string>("");
-  const [carouselPhotoIndex, setCarouselPhotoIndex] = useState(0);
+  const [startingPhoto, setStartingPhoto] = useState<number>(0);
+  const [carouselVisibility, setCarouselVisibility] = useState<
+    "hidden" | "visible"
+  >("hidden");
+
   useEffect(() => {
     fetch("/api/photos/refresh");
     fetch("/api/photos")
@@ -54,14 +58,9 @@ export default function Gallery({ version }: GalleryVersion) {
 
   const gridLayout = gridPhotosArray(photos, currentFilter, version);
 
+  console.log(photos.length, gridLayout);
   const media = gridLayout.map((photosArr) => {
-    return (
-      <GridCard
-        photosArr={photosArr}
-        key={photosArr[0].name}
-        setCarouselPhotoIndex={setCarouselPhotoIndex}
-      />
-    );
+    return <GridCard photosArr={photosArr} key={photosArr[0].name} />;
   });
 
   const carouselPhotos = [];
@@ -82,12 +81,29 @@ export default function Gallery({ version }: GalleryVersion) {
     }
     carouselPhotos.push(photo);
   }
+  console.log(carouselPhotos.length);
 
   return (
     <>
       <section
         id="gallery"
         className="relative left-[2vw] w-[96vw] flex flex-wrap justify-center gap-6"
+        onClick={(event) => {
+          const galleryWrapper = document.getElementById(
+            "gallery"
+          ) as HTMLElement;
+
+          let counter = 0;
+          for (let elem of galleryWrapper.children) {
+            for (let photoDiv of (elem as HTMLElement).children) {
+              if (event.target === photoDiv.children[0]) {
+                setStartingPhoto(counter - 1);
+                setCarouselVisibility("visible");
+              }
+              counter++;
+            }
+          }
+        }}
       >
         {version === "diplomas" ? (
           <></>
@@ -118,7 +134,12 @@ export default function Gallery({ version }: GalleryVersion) {
         })}
       </section>
 
-      <Carousel photos={carouselPhotos} startingPhoto={carouselPhotoIndex} />
+      <Carousel
+        photos={carouselPhotos}
+        startingPhoto={startingPhoto}
+        carouselVisibility={carouselVisibility}
+        setCarouselVisibility={setCarouselVisibility}
+      />
     </>
   );
 }
