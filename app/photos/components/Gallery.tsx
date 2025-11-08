@@ -5,7 +5,6 @@ import GalleryFilterButton from "./GalleryFilterButton";
 import { gridPhotosArray } from "@/app/helpers/gridPhotosArray";
 import GridCard from "./GridCard";
 import Carousel from "./Carousel";
-import { createContext } from "vm";
 
 export interface Photo {
   name: string;
@@ -58,7 +57,6 @@ export default function Gallery({ version }: GalleryVersion) {
 
   const gridLayout = gridPhotosArray(photos, currentFilter, version);
 
-  console.log(photos.length, gridLayout);
   const media = gridLayout.map((photosArr) => {
     return <GridCard photosArr={photosArr} key={photosArr[0].name} />;
   });
@@ -81,7 +79,6 @@ export default function Gallery({ version }: GalleryVersion) {
     }
     carouselPhotos.push(photo);
   }
-  console.log(carouselPhotos.length);
 
   return (
     <>
@@ -115,23 +112,7 @@ export default function Gallery({ version }: GalleryVersion) {
           />
         )}
 
-        {photos.map((photo, index) => {
-          if (photo.category === "Дипломы" && version !== "diplomas") {
-            return;
-          }
-          if (photo.category !== "Дипломы" && version === "diplomas") {
-            return;
-          }
-          if (currentFilter !== "") {
-            if (
-              photo.category !== currentFilter &&
-              photo.dateTime.slice(0, 4) !== currentFilter
-            ) {
-              return;
-            }
-          }
-          return media[index];
-        })}
+        {media}
       </section>
 
       <Carousel

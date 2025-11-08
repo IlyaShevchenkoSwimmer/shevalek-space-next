@@ -58,10 +58,13 @@ export default function Carousel({
 
   useEffect(() => {
     if (carouselRef.current && photos.length > 0) {
-      const firstSlideID = (carouselRef.current as HTMLElement).children[0].id;
-      const firstSlide = Number(firstSlideID.slice(8));
-      (carouselRef.current as HTMLElement).scrollLeft =
-        (slideInView - firstSlide) * window.innerWidth;
+      if ((carouselRef.current as HTMLElement).children.length > 0) {
+        const firstSlideID = (carouselRef.current as HTMLElement).children[0]
+          .id;
+        const firstSlide = Number(firstSlideID.slice(8));
+        (carouselRef.current as HTMLElement).scrollLeft =
+          (slideInView - firstSlide) * window.innerWidth;
+      }
     }
   }, [slideInView, carouselMedia]);
 
@@ -89,7 +92,7 @@ export default function Carousel({
         {carouselMedia}
       </div>
       <div
-        className="absolute top-10 right-10 w-10 h-10 flex justify-center items-center"
+        className="absolute top-10 right-10 w-10 h-10 flex justify-center items-center hover:cursor-pointer"
         onClick={() => {
           setCarouselVisibility("hidden");
         }}

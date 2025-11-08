@@ -9,7 +9,35 @@ export function gridPhotosArray(
   const resultArr = [];
   const currArr = [];
   let currArrIndex = 0;
+
   while (index < jsonAnswer.length) {
+    if (index === jsonAnswer.length - 1) {
+      if (jsonAnswer[index].category === "Дипломы" && version === "diplomas") {
+        currArr.push(jsonAnswer[index]);
+      }
+      if (version !== "diplomas") {
+        if (currentFilter === "") {
+          currArr.push(jsonAnswer[index]);
+        }
+        if (currentFilter !== "") {
+          if (
+            jsonAnswer[index].category === currentFilter ||
+            jsonAnswer[index].dateTime.slice(0, 4) === currentFilter
+          ) {
+            currArr.push(jsonAnswer[index]);
+          }
+        }
+      }
+
+      if (currArr.length > 0) {
+        resultArr.push([...currArr]);
+      }
+      currArr.length = 0;
+      currArrIndex = 0;
+      index++;
+      continue;
+    }
+
     if (jsonAnswer[index].category === "Дипломы" && version !== "diplomas") {
       index++;
       continue;

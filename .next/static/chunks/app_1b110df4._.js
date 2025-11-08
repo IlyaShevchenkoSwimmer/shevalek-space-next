@@ -150,6 +150,30 @@ function gridPhotosArray(jsonAnswer, currentFilter, version) {
     const currArr = [];
     let currArrIndex = 0;
     while(index < jsonAnswer.length){
+        if (index === jsonAnswer.length - 1) {
+            if (jsonAnswer[index].category === "Дипломы" && version === "diplomas") {
+                currArr.push(jsonAnswer[index]);
+            }
+            if (version !== "diplomas") {
+                if (currentFilter === "") {
+                    currArr.push(jsonAnswer[index]);
+                }
+                if (currentFilter !== "") {
+                    if (jsonAnswer[index].category === currentFilter || jsonAnswer[index].dateTime.slice(0, 4) === currentFilter) {
+                        currArr.push(jsonAnswer[index]);
+                    }
+                }
+            }
+            if (currArr.length > 0) {
+                resultArr.push([
+                    ...currArr
+                ]);
+            }
+            currArr.length = 0;
+            currArrIndex = 0;
+            index++;
+            continue;
+        }
         if (jsonAnswer[index].category === "Дипломы" && version !== "diplomas") {
             index++;
             continue;
@@ -223,7 +247,7 @@ function GridCard({ photosArr }) {
     const gridCoordsArr = getGridCoordsArr(photosArr);
     const media = photosArr.map((photo, index)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "rounded-3xl shadow-2xl transition-all ease-in-out duration-500",
+            className: "rounded-3xl shadow-2xl transition-all ease-in-out duration-500 hover:cursor-pointer",
             style: gridCoordsArr[index],
             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                 width: 1000,
@@ -233,12 +257,12 @@ function GridCard({ photosArr }) {
                 className: "w-full h-full object-cover rounded-3xl"
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/GridCard.tsx",
-                lineNumber: 26,
+                lineNumber: 25,
                 columnNumber: 9
             }, this)
         }, photo.name, false, {
             fileName: "[project]/app/photos/components/GridCard.tsx",
-            lineNumber: 21,
+            lineNumber: 20,
             columnNumber: 7
         }, this);
     });
@@ -247,7 +271,7 @@ function GridCard({ photosArr }) {
         children: media
     }, void 0, false, {
         fileName: "[project]/app/photos/components/GridCard.tsx",
-        lineNumber: 37,
+        lineNumber: 36,
         columnNumber: 5
     }, this);
 }
@@ -516,9 +540,11 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Carousel.useEffect": ()=>{
             if (carouselRef.current && photos.length > 0) {
-                const firstSlideID = carouselRef.current.children[0].id;
-                const firstSlide = Number(firstSlideID.slice(8));
-                carouselRef.current.scrollLeft = (slideInView - firstSlide) * window.innerWidth;
+                if (carouselRef.current.children.length > 0) {
+                    const firstSlideID = carouselRef.current.children[0].id;
+                    const firstSlide = Number(firstSlideID.slice(8));
+                    carouselRef.current.scrollLeft = (slideInView - firstSlide) * window.innerWidth;
+                }
             }
         }
     }["Carousel.useEffect"], [
@@ -548,11 +574,11 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
                 children: carouselMedia
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Carousel.tsx",
-                lineNumber: 74,
+                lineNumber: 77,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute top-10 right-10 w-10 h-10 flex justify-center items-center",
+                className: "absolute top-10 right-10 w-10 h-10 flex justify-center items-center hover:cursor-pointer",
                 onClick: ()=>{
                     setCarouselVisibility("hidden");
                 },
@@ -561,26 +587,26 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
                         className: "absolute bg-amber-50 w-full h-0.5 rotate-45"
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Carousel.tsx",
-                        lineNumber: 97,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bg-amber-50 w-full h-0.5 rotate-135"
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Carousel.tsx",
-                        lineNumber: 98,
+                        lineNumber: 101,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/photos/components/Carousel.tsx",
-                lineNumber: 91,
+                lineNumber: 94,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/photos/components/Carousel.tsx",
-        lineNumber: 69,
+        lineNumber: 72,
         columnNumber: 5
     }, this);
 }
@@ -658,13 +684,12 @@ function Gallery({ version }) {
         currentFilter
     ]);
     const gridLayout = (0, __TURBOPACK__imported__module__$5b$project$5d2f$app$2f$helpers$2f$gridPhotosArray$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["gridPhotosArray"])(photos, currentFilter, version);
-    console.log(photos.length, gridLayout);
     const media = gridLayout.map((photosArr)=>{
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$GridCard$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
             photosArr: photosArr
         }, photosArr[0].name, false, {
             fileName: "[project]/app/photos/components/Gallery.tsx",
-            lineNumber: 63,
+            lineNumber: 61,
             columnNumber: 12
         }, this);
     });
@@ -683,7 +708,6 @@ function Gallery({ version }) {
         }
         carouselPhotos.push(photo);
     }
-    console.log(carouselPhotos.length);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -709,27 +733,14 @@ function Gallery({ version }) {
                         setCurrentFilter: setCurrentFilter
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Gallery.tsx",
-                        lineNumber: 111,
+                        lineNumber: 108,
                         columnNumber: 11
                     }, this),
-                    photos.map((photo, index)=>{
-                        if (photo.category === "Дипломы" && version !== "diplomas") {
-                            return;
-                        }
-                        if (photo.category !== "Дипломы" && version === "diplomas") {
-                            return;
-                        }
-                        if (currentFilter !== "") {
-                            if (photo.category !== currentFilter && photo.dateTime.slice(0, 4) !== currentFilter) {
-                                return;
-                            }
-                        }
-                        return media[index];
-                    })
+                    media
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 88,
+                lineNumber: 85,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$app$2f$photos$2f$components$2f$Carousel$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -739,7 +750,7 @@ function Gallery({ version }) {
                 setCarouselVisibility: setCarouselVisibility
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Gallery.tsx",
-                lineNumber: 137,
+                lineNumber: 118,
                 columnNumber: 7
             }, this)
         ]

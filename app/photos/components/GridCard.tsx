@@ -15,11 +15,10 @@ interface gridCoords {
 }
 export default function GridCard({ photosArr }: GridCardProps) {
   const gridCoordsArr: gridCoords[] = getGridCoordsArr(photosArr);
-
   const media = photosArr.map((photo, index) => {
     return (
       <div
-        className="rounded-3xl shadow-2xl transition-all ease-in-out duration-500"
+        className="rounded-3xl shadow-2xl transition-all ease-in-out duration-500 hover:cursor-pointer"
         style={gridCoordsArr[index]}
         key={photo.name}
       >
