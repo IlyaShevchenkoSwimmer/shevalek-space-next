@@ -56,6 +56,18 @@ export default function Carousel({
     );
   });
 
+  const resizeCallback = () => {
+    if (carouselRef.current && photos.length > 0) {
+      if ((carouselRef.current as HTMLElement).children.length > 0) {
+        const firstSlideID = (carouselRef.current as HTMLElement).children[0]
+          .id;
+        const firstSlide = Number(firstSlideID.slice(8));
+        (carouselRef.current as HTMLElement).scrollLeft =
+          (slideInView - firstSlide) * window.innerWidth;
+      }
+    }
+  };
+
   useEffect(() => {
     if (carouselRef.current && photos.length > 0) {
       if ((carouselRef.current as HTMLElement).children.length > 0) {
@@ -66,11 +78,15 @@ export default function Carousel({
           (slideInView - firstSlide) * window.innerWidth;
       }
     }
+    window.addEventListener("resize", resizeCallback);
+    return () => {
+      window.removeEventListener("resize", resizeCallback);
+    };
   }, [slideInView, carouselMedia]);
 
   return (
     <section
-      className="fixed w-[100vw] h-[100vh] top-0 left-0 z-[200] bg-black"
+      className="fixed w-[100vw] h-[100dvh] top-0 left-0 z-[200] bg-black"
       id="carouselSection"
       style={{ visibility: carouselVisibility }}
     >

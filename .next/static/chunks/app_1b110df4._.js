@@ -537,6 +537,15 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
             columnNumber: 7
         }, this);
     });
+    const resizeCallback = ()=>{
+        if (carouselRef.current && photos.length > 0) {
+            if (carouselRef.current.children.length > 0) {
+                const firstSlideID = carouselRef.current.children[0].id;
+                const firstSlide = Number(firstSlideID.slice(8));
+                carouselRef.current.scrollLeft = (slideInView - firstSlide) * window.innerWidth;
+            }
+        }
+    };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Carousel.useEffect": ()=>{
             if (carouselRef.current && photos.length > 0) {
@@ -546,13 +555,19 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
                     carouselRef.current.scrollLeft = (slideInView - firstSlide) * window.innerWidth;
                 }
             }
+            window.addEventListener("resize", resizeCallback);
+            return ({
+                "Carousel.useEffect": ()=>{
+                    window.removeEventListener("resize", resizeCallback);
+                }
+            })["Carousel.useEffect"];
         }
     }["Carousel.useEffect"], [
         slideInView,
         carouselMedia
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
-        className: "fixed w-[100vw] h-[100vh] top-0 left-0 z-[200] bg-black",
+        className: "fixed w-[100vw] h-[100dvh] top-0 left-0 z-[200] bg-black",
         id: "carouselSection",
         style: {
             visibility: carouselVisibility
@@ -574,7 +589,7 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
                 children: carouselMedia
             }, void 0, false, {
                 fileName: "[project]/app/photos/components/Carousel.tsx",
-                lineNumber: 77,
+                lineNumber: 93,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -587,26 +602,26 @@ function Carousel({ photos, startingPhoto, carouselVisibility, setCarouselVisibi
                         className: "absolute bg-amber-50 w-full h-0.5 rotate-45"
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Carousel.tsx",
-                        lineNumber: 100,
+                        lineNumber: 116,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute bg-amber-50 w-full h-0.5 rotate-135"
                     }, void 0, false, {
                         fileName: "[project]/app/photos/components/Carousel.tsx",
-                        lineNumber: 101,
+                        lineNumber: 117,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/photos/components/Carousel.tsx",
-                lineNumber: 94,
+                lineNumber: 110,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/photos/components/Carousel.tsx",
-        lineNumber: 72,
+        lineNumber: 88,
         columnNumber: 5
     }, this);
 }

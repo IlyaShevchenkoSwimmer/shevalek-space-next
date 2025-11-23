@@ -93,7 +93,7 @@ async function noteGetter(path) {
         let lines = 0;
         return new Promise((resolve)=>{
             const info = {
-                text: "",
+                text: [],
                 heading: ""
             };
             const fileStream = __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].createReadStream(path + note);
@@ -103,7 +103,7 @@ async function noteGetter(path) {
             });
             rl.on("line", (line)=>{
                 if (lines > 1) {
-                    info.text += line + "\n";
+                    info.text.push(line);
                 }
                 if (lines === 0) {
                     info.heading = line;

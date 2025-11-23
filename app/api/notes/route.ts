@@ -8,6 +8,11 @@ export async function GET() {
   return NextResponse.json(data);
 }
 
+interface InfoAnswer {
+  text: string[];
+  heading: string;
+}
+
 async function noteGetter(path: string) {
   const notes = fs.readdirSync(path);
 
@@ -16,7 +21,7 @@ async function noteGetter(path: string) {
       let lines = 0;
 
       return new Promise((resolve) => {
-        const info = { text: "", heading: "" };
+        const info: InfoAnswer = { text: [], heading: "" };
 
         const fileStream = fs.createReadStream(path + note);
 
@@ -27,7 +32,7 @@ async function noteGetter(path: string) {
 
         rl.on("line", (line) => {
           if (lines > 1) {
-            info.text += line + "\n";
+            info.text.push(line);
           }
           if (lines === 0) {
             info.heading = line;

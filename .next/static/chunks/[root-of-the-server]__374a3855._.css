@@ -75,6 +75,7 @@
     *, :before, :after, ::backdrop {
       --tw-scroll-snap-strictness: proximity;
       --tw-border-style: solid;
+      --tw-font-weight: initial;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
@@ -110,15 +111,19 @@
     --spacing: .25rem;
     --text-sm: .875rem;
     --text-sm--line-height: calc(1.25 / .875);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
+    --font-weight-bold: 700;
     --radius-xl: .75rem;
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
+    --radius-4xl: 2rem;
     --ease-in-out: cubic-bezier(.4, 0, .2, 1);
     --default-transition-duration: .15s;
     --default-transition-timing-function: cubic-bezier(.4, 0, .2, 1);
@@ -384,6 +389,10 @@
     z-index: 200;
   }
 
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+
   .mb-5 {
     margin-bottom: calc(var(--spacing) * 5);
   }
@@ -444,8 +453,12 @@
     height: 60vh;
   }
 
-  .h-\[100vh\] {
-    height: 100vh;
+  .h-\[80dvh\] {
+    height: 80dvh;
+  }
+
+  .h-\[100dvh\] {
+    height: 100dvh;
   }
 
   .h-full {
@@ -458,6 +471,26 @@
 
   .max-h-\[40vh\] {
     max-height: 40vh;
+  }
+
+  .max-h-\[80dvh\] {
+    max-height: 80dvh;
+  }
+
+  .min-h-2 {
+    min-height: calc(var(--spacing) * 2);
+  }
+
+  .min-h-2\.5 {
+    min-height: calc(var(--spacing) * 2.5);
+  }
+
+  .min-h-3 {
+    min-height: calc(var(--spacing) * 3);
+  }
+
+  .min-h-\[80dvh\] {
+    min-height: 80dvh;
   }
 
   .min-h-lvh {
@@ -540,6 +573,10 @@
     rotate: 135deg;
   }
 
+  .resize {
+    resize: both;
+  }
+
   .snap-x {
     scroll-snap-type: x var(--tw-scroll-snap-strictness);
   }
@@ -614,6 +651,10 @@
 
   .rounded-3xl {
     border-radius: var(--radius-3xl);
+  }
+
+  .rounded-4xl {
+    border-radius: var(--radius-4xl);
   }
 
   .rounded-full {
@@ -820,6 +861,11 @@
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
 
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -830,12 +876,25 @@
     line-height: var(--tw-leading, var(--text-xl--line-height));
   }
 
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+
   .text-amber-50 {
     color: var(--color-amber-50);
   }
 
   .text-black {
     color: var(--color-black);
+  }
+
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+
+  .italic {
+    font-style: italic;
   }
 
   .opacity-0 {
@@ -1081,6 +1140,11 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false
 }
 
 @property --tw-shadow {
