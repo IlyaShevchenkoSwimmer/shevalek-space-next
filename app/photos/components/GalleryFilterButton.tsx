@@ -27,9 +27,10 @@ export default function GalleryFilterButton({
         const filters = document.getElementById("category-filters");
         filters?.classList.toggle("hidden");
       }}
-      className="fixed z-50 top-4 right-6 pt-1 pb-1 pl-5 pr-5 text-amber-50 bg-gray-500 rounded-xl hover:cursor-pointer hover:bg-gray-600 transition-colors duration-500 ease-in-out"
+      className="fixed z-50 top-1.5 right-3 md:top-4 md:right-6 pt-1 pb-1 pl-5 pr-5 text-amber-50 bg-gray-500 rounded-xl hover:cursor-pointer hover:bg-gray-600 transition-colors duration-500 ease-in-out"
     >
-      Фильтры
+      <span className="hidden md:inline">Фильтры</span>
+      <img src="./filter.png" alt="filters" className="md:hidden w-7 h-7" />
       <div
         id={"category-filters"}
         className="absolute top-10 w-[60vw] right-2 bg-gray-500 rounded-2xl hidden"

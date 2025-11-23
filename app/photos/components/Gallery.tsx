@@ -94,7 +94,7 @@ export default function Gallery({ version }: GalleryVersion) {
           for (let elem of galleryWrapper.children) {
             for (let photoDiv of (elem as HTMLElement).children) {
               if (event.target === photoDiv.children[0]) {
-                setStartingPhoto(counter - 1);
+                setStartingPhoto(counter - 3);
                 setCarouselVisibility("visible");
               }
               counter++;

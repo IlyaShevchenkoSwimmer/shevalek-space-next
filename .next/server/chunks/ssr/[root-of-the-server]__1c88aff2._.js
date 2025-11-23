@@ -157,7 +157,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 ;
 function AsideMenu() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
-        className: "fixed top-0 left-0 z-50 flex flex-col justify-between pt-[20vh] pb-[15vh] pl-[10vw] md:pl-[7vw] bg-amber-50 h-lvh w-[100vw] md:w-[60vw] lg:w-[40vw] transition-all ease-in-out duration-500 aside-hidden",
+        className: "fixed top-0 left-0 z-50 flex flex-col justify-between pt-[20vh] pb-[15vh] pl-[10vw] md:pl-[7vw] bg-amber-50 h-dvh w-[100vw] md:w-[60vw] lg:w-[40vw] transition-all ease-in-out duration-500 aside-hidden",
         id: "aside-menu",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {

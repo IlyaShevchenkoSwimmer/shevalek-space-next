@@ -111,8 +111,6 @@
     --spacing: .25rem;
     --text-sm: .875rem;
     --text-sm--line-height: calc(1.25 / .875);
-    --text-lg: 1.125rem;
-    --text-lg--line-height: calc(1.75 / 1.125);
     --text-xl: 1.25rem;
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
@@ -337,8 +335,8 @@
     top: calc(var(--spacing) * 0);
   }
 
-  .top-4 {
-    top: calc(var(--spacing) * 4);
+  .top-1\.5 {
+    top: calc(var(--spacing) * 1.5);
   }
 
   .top-6 {
@@ -355,6 +353,10 @@
 
   .right-2 {
     right: calc(var(--spacing) * 2);
+  }
+
+  .right-3 {
+    right: calc(var(--spacing) * 3);
   }
 
   .right-6 {
@@ -425,6 +427,10 @@
     height: calc(var(--spacing) * 3);
   }
 
+  .h-7 {
+    height: calc(var(--spacing) * 7);
+  }
+
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -457,16 +463,12 @@
     height: 80dvh;
   }
 
-  .h-\[100dvh\] {
+  .h-\[100dvh\], .h-dvh {
     height: 100dvh;
   }
 
   .h-full {
     height: 100%;
-  }
-
-  .h-lvh {
-    height: 100lvh;
   }
 
   .max-h-\[40vh\] {
@@ -477,16 +479,8 @@
     max-height: 80dvh;
   }
 
-  .min-h-2 {
-    min-height: calc(var(--spacing) * 2);
-  }
-
   .min-h-2\.5 {
     min-height: calc(var(--spacing) * 2.5);
-  }
-
-  .min-h-3 {
-    min-height: calc(var(--spacing) * 3);
   }
 
   .min-h-\[80dvh\] {
@@ -507,6 +501,10 @@
 
   .w-6 {
     width: calc(var(--spacing) * 6);
+  }
+
+  .w-7 {
+    width: calc(var(--spacing) * 7);
   }
 
   .w-8 {
@@ -861,11 +859,6 @@
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
 
-  .text-lg {
-    font-size: var(--text-lg);
-    line-height: var(--tw-leading, var(--text-lg--line-height));
-  }
-
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
@@ -991,6 +984,24 @@
   }
 
   @media (width >= 48rem) {
+    .md\:top-4 {
+      top: calc(var(--spacing) * 4);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:right-6 {
+      right: calc(var(--spacing) * 6);
+    }
+  }
+
+  @media (width >= 48rem) {
+    .md\:hidden {
+      display: none;
+    }
+  }
+
+  @media (width >= 48rem) {
     .md\:inline {
       display: inline;
     }
@@ -1089,6 +1100,10 @@
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  background-color: #000;
 }
 
 .aside-hidden {

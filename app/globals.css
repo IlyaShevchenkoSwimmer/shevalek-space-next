@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: black;
+}
+
 .aside-hidden {
   left: -40vw;
 }

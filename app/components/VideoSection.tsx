@@ -19,7 +19,14 @@ export default function VideoSection({
 }: VideoSectionProps) {
   return (
     <section className="w-full h-[60vh] md:h-fit relative">
-      <video className="w-full h-full object-cover" autoPlay muted loop>
+      <video
+        className="w-full h-full object-cover"
+        playsInline
+        autoPlay
+        muted
+        loop
+        preload="auto"
+      >
         <source src={videoSrc} type="video/mp4"></source>
       </video>
       <div className="absolute w-full h-full top-0 left-0 text-amber-50 bg-black/30 flex flex-col justify-center items-center gap-5">

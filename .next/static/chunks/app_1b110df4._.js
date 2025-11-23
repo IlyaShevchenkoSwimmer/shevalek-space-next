@@ -25,9 +25,25 @@ function GalleryFilterButton({ photos, currentFilter, setCurrentFilter }) {
             const filters = document.getElementById("category-filters");
             filters?.classList.toggle("hidden");
         },
-        className: "fixed z-50 top-4 right-6 pt-1 pb-1 pl-5 pr-5 text-amber-50 bg-gray-500 rounded-xl hover:cursor-pointer hover:bg-gray-600 transition-colors duration-500 ease-in-out",
+        className: "fixed z-50 top-1.5 right-3 md:top-4 md:right-6 pt-1 pb-1 pl-5 pr-5 text-amber-50 bg-gray-500 rounded-xl hover:cursor-pointer hover:bg-gray-600 transition-colors duration-500 ease-in-out",
         children: [
-            "Фильтры",
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                className: "hidden md:inline",
+                children: "Фильтры"
+            }, void 0, false, {
+                fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
+                lineNumber: 32,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                src: "./filter.png",
+                alt: "filters",
+                className: "md:hidden w-7 h-7"
+            }, void 0, false, {
+                fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
+                lineNumber: 33,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 id: "category-filters",
                 className: "absolute top-10 w-[60vw] right-2 bg-gray-500 rounded-2xl hidden",
@@ -40,14 +56,14 @@ function GalleryFilterButton({ photos, currentFilter, setCurrentFilter }) {
                                 className: "rounded-full w-2 h-2 bg-amber-50 opacity-0 transition-opacity duration-300 ease-in-out"
                             }, void 0, false, {
                                 fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                lineNumber: 41,
+                                lineNumber: 42,
                                 columnNumber: 11
                             }, this),
                             "Без фильтра"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                        lineNumber: 37,
+                        lineNumber: 38,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -67,20 +83,20 @@ function GalleryFilterButton({ photos, currentFilter, setCurrentFilter }) {
                                                 className: "rounded-full w-2 h-2 bg-amber-50 opacity-0 transition-opacity duration-300 ease-in-out"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                                lineNumber: 56,
+                                                lineNumber: 57,
                                                 columnNumber: 19
                                             }, this),
                                             category
                                         ]
                                     }, category, true, {
                                         fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                        lineNumber: 51,
+                                        lineNumber: 52,
                                         columnNumber: 17
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -94,32 +110,32 @@ function GalleryFilterButton({ photos, currentFilter, setCurrentFilter }) {
                                                 className: "rounded-full w-2 h-2 bg-amber-50 opacity-0 transition-opacity duration-300 ease-in-out"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                                lineNumber: 70,
+                                                lineNumber: 71,
                                                 columnNumber: 19
                                             }, this),
                                             year
                                         ]
                                     }, year, true, {
                                         fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                        lineNumber: 65,
+                                        lineNumber: 66,
                                         columnNumber: 17
                                     }, this);
                                 })
                             }, void 0, false, {
                                 fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                                lineNumber: 62,
+                                lineNumber: 63,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                        lineNumber: 44,
+                        lineNumber: 45,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/photos/components/GalleryFilterButton.tsx",
-                lineNumber: 33,
+                lineNumber: 34,
                 columnNumber: 7
             }, this)
         ]
@@ -734,7 +750,7 @@ function Gallery({ version }) {
                     for (let elem of galleryWrapper.children){
                         for (let photoDiv of elem.children){
                             if (event.target === photoDiv.children[0]) {
-                                setStartingPhoto(counter - 1);
+                                setStartingPhoto(counter - 3);
                                 setCarouselVisibility("visible");
                             }
                             counter++;
