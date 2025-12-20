@@ -94,7 +94,12 @@ export default function Gallery({ version }: GalleryVersion) {
           for (const elem of galleryWrapper.children) {
             for (const photoDiv of (elem as HTMLElement).children) {
               if (event.target === photoDiv.children[0]) {
-                setStartingPhoto(counter - 3);
+                if (version === "diplomas") {
+                  setStartingPhoto(counter);
+                } else {
+                  setStartingPhoto(counter - 3);
+                }
+
                 setCarouselVisibility("visible");
               }
               counter++;
