@@ -1,13 +1,1 @@
-{
-  "app": {
-    "[project]/app/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ],
-    "[project]/app/photos/page": [
-      "static/media/4iCv6KVjbNBYlgoC1CzjsGyNPYZvgw-s.p.3970f18e.woff2"
-    ]
-  },
-  "appUsingSizeAdjust": true,
-  "pages": {},
-  "pagesUsingSizeAdjust": false
-}
+{"pages":{},"app":{"/Users/ilyashevchenko/Desktop/my-projects/shevalek-space-next/app/layout":["static/media/c99b890c5ded8d2e-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}

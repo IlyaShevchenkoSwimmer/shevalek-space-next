@@ -62,7 +62,7 @@ export default function Gallery({ version }: GalleryVersion) {
   });
 
   const carouselPhotos = [];
-  for (let photo of photos) {
+  for (const photo of photos) {
     if (photo.category === "Дипломы" && version !== "diplomas") {
       continue;
     }
@@ -91,8 +91,8 @@ export default function Gallery({ version }: GalleryVersion) {
           ) as HTMLElement;
 
           let counter = 0;
-          for (let elem of galleryWrapper.children) {
-            for (let photoDiv of (elem as HTMLElement).children) {
+          for (const elem of galleryWrapper.children) {
+            for (const photoDiv of (elem as HTMLElement).children) {
               if (event.target === photoDiv.children[0]) {
                 setStartingPhoto(counter - 3);
                 setCarouselVisibility("visible");

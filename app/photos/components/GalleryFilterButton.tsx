@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Photo } from "./Gallery";
 
 interface GalleryFilterButtonProps {
@@ -10,7 +10,6 @@ interface GalleryFilterButtonProps {
 }
 export default function GalleryFilterButton({
   photos,
-  currentFilter,
   setCurrentFilter,
 }: GalleryFilterButtonProps) {
   const categoriesSet = new Set<string>();

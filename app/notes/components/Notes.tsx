@@ -7,7 +7,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import { useEffect, useState } from "react";
-import { text } from "stream/consumers";
 
 interface Note {
   text: string[];

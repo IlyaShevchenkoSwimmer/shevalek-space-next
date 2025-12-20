@@ -3,15 +3,7 @@
 import Image from "next/image";
 
 import { Photo } from "./Gallery";
-import {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
 
 interface CarouselProps {
   photos: Photo[];
@@ -82,7 +74,7 @@ export default function Carousel({
     return () => {
       window.removeEventListener("resize", resizeCallback);
     };
-  }, [slideInView, carouselMedia]);
+  }, [slideInView, carouselMedia, photos.length, resizeCallback]);
 
   return (
     <section
@@ -111,6 +103,7 @@ export default function Carousel({
         className="absolute top-10 right-10 w-10 h-10 flex justify-center items-center hover:cursor-pointer"
         onClick={() => {
           setCarouselVisibility("hidden");
+          setSlideInView(startingPhoto);
         }}
       >
         <div className="absolute bg-amber-50 w-full h-0.5 rotate-45"></div>

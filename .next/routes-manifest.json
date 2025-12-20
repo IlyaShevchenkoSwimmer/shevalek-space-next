@@ -26,6 +26,24 @@
       "regex": "^/_not\\-found(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/diplomas",
+      "regex": "^/diplomas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/diplomas(?:/)?$"
+    },
+    {
+      "page": "/notes",
+      "regex": "^/notes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/notes(?:/)?$"
+    },
+    {
+      "page": "/photos",
+      "regex": "^/photos(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/photos(?:/)?$"
     }
   ],
   "dataRoutes": [],

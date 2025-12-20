@@ -1,6 +1,78 @@
 {
   "version": 4,
   "routes": {
+    "/photos": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/photos",
+      "dataRoute": "/photos.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/notes": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/notes",
+      "dataRoute": "/notes.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/diplomas": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/diplomas",
+      "dataRoute": "/diplomas.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/": {
       "experimentalBypassFor": [
         {
@@ -29,8 +101,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "951072273483c4fb74d1159d07d9fb33",
-    "previewModeSigningKey": "ef89ddb0437c1e40a06e2402470ab0bfa848478858fb32c0389111f65ae104c7",
-    "previewModeEncryptionKey": "9eb2541c5b10bec7d295381bb1d9fec1697d87ff951ec01b4ce85239db909cf1"
+    "previewModeId": "afff96468184225b756eff4d83a95b95",
+    "previewModeSigningKey": "66654331427fb0b2ba01776e34b3ca11c38971a81e27957b0816cd38ab515526",
+    "previewModeEncryptionKey": "d081c643822f1cb0b208bbd9b4ea4a1cdb80ade4299504688be1e2f96bcc9a63"
   }
 }
