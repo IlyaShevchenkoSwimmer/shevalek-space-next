@@ -26,7 +26,6 @@ export default function Gallery({ version }: GalleryVersion) {
   >("hidden");
 
   useEffect(() => {
-    fetch("/api/photos/refresh");
     fetch("/api/photos")
       .then((res) => res.json())
       .then((data) => setPhotos(data));
