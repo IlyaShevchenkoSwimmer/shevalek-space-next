@@ -1,10 +1,10 @@
 {
-  "/api/notes/route": "/api/notes",
   "/_not-found/page": "/_not-found",
-  "/api/photos/route": "/api/photos",
   "/api/photos/refresh/route": "/api/photos/refresh",
+  "/api/photos/route": "/api/photos",
+  "/api/notes/route": "/api/notes",
   "/notes/page": "/notes",
+  "/page": "/",
   "/diplomas/page": "/diplomas",
-  "/photos/page": "/photos",
-  "/page": "/"
+  "/photos/page": "/photos"
 }

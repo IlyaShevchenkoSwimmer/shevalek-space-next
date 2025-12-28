@@ -3,7 +3,14 @@
 import Image from "next/image";
 
 import { Photo } from "./Gallery";
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 interface CarouselProps {
   photos: Photo[];
@@ -39,7 +46,7 @@ export default function Carousel({
           id={photo.name}
           width={1000}
           height={1000}
-          src={"/photos/" + photo.name}
+          src={"http://localhost:3000/photos/" + photo.name}
           alt="photo"
           className="w-full h-full object-contain"
           draggable={false}
@@ -48,7 +55,7 @@ export default function Carousel({
     );
   });
 
-  const resizeCallback = () => {
+  const resizeCallback = useCallback(() => {
     if (carouselRef.current && photos.length > 0) {
       if ((carouselRef.current as HTMLElement).children.length > 0) {
         const firstSlideID = (carouselRef.current as HTMLElement).children[0]
@@ -58,7 +65,7 @@ export default function Carousel({
           (slideInView - firstSlide) * window.innerWidth;
       }
     }
-  };
+  }, [slideInView, photos.length]);
 
   useEffect(() => {
     if (carouselRef.current && photos.length > 0) {

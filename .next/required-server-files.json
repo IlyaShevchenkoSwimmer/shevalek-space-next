@@ -58,7 +58,15 @@
       "dangerouslyAllowSVG": false,
       "contentSecurityPolicy": "script-src 'none'; frame-src 'none'; sandbox;",
       "contentDispositionType": "attachment",
-      "remotePatterns": [],
+      "remotePatterns": [
+        {
+          "protocol": "http",
+          "hostname": "localhost",
+          "port": "3000",
+          "pathname": "/photos/**",
+          "search": ""
+        }
+      ],
       "unoptimized": false
     },
     "devIndicators": {

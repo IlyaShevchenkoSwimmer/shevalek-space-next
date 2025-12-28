@@ -25,7 +25,7 @@ export default function GridCard({ photosArr }: GridCardProps) {
         <Image
           width={1000}
           height={1000}
-          src={"/photos/" + photo.name}
+          src={"http://localhost:3000/photos/" + photo.name}
           alt="photo"
           className="w-full h-full object-cover rounded-3xl"
         ></Image>
