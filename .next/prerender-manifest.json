@@ -49,30 +49,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/photos": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/photos",
-      "dataRoute": "/photos.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/diplomas": {
       "experimentalBypassFor": [
         {
@@ -96,13 +72,37 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
+    },
+    "/photos": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/photos",
+      "dataRoute": "/photos.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "f07184e8cb6eeb5b03401263866b69d5",
-    "previewModeSigningKey": "1db9574dd9f32c35b26c26190c863c99b837df7aab5221bfd160ba322faeb968",
-    "previewModeEncryptionKey": "f4e24bbb59de2a65848363da11d80d32a3efe3535f1bd05fd74ebd08c5348e79"
+    "previewModeId": "ff942826c770a2ae65e412085bc06350",
+    "previewModeSigningKey": "c57597d4ea26218378eedc61a616117f51f1243abf235d6889f5f160410f6d2b",
+    "previewModeEncryptionKey": "e97458066aa053fe5d6f3d55cabdec780e7bdd0e112ed90980a96f5f141303a0"
   }
 }
