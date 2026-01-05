@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/Users/ilyashevchenko/Desktop/my-projects/shevalek-space-next/app/layout":["static/media/c99b890c5ded8d2e-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';
