@@ -44,8 +44,8 @@ export default function Carousel({
       >
         <Image
           id={photo.name}
-          width={1000}
-          height={1000}
+          width={500}
+          height={500}
           src={"http://localhost:3000/photos/" + photo.name}
           alt="photo"
           className="w-full h-full object-contain"

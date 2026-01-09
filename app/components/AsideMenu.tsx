@@ -7,7 +7,7 @@ import Image from "next/image";
 export default function AsideMenu() {
   return (
     <aside
-      className="fixed top-0 left-0 z-50 flex flex-col justify-between pt-[20vh] pb-[15vh] pl-[10vw] md:pl-[7vw] bg-amber-50 h-dvh w-[100vw] md:w-[60vw] lg:w-[40vw] transition-all ease-in-out duration-500 aside-hidden"
+      className="fixed top-0 left-0 z-200 flex flex-col justify-between pt-[20vh] pb-[15vh] pl-[10vw] md:pl-[7vw] bg-amber-50 h-dvh w-[100vw] md:w-[60vw] lg:w-[40vw] transition-all ease-in-out duration-500 aside-hidden"
       id="aside-menu"
     >
       <Link

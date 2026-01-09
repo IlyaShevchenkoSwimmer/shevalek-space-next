@@ -9,20 +9,30 @@ export default function Home() {
       <main>
         <VideoSection
           videoSrc="/thunder.mov"
-          sectionName="описание раздела"
-          sectionHeader="Алеша - Галоша"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit officia totam omnis saepe vero, blanditiis neque ducimus nemo adipisci accusamus consectetur inventore, natus qui deserunt voluptatem, expedita commodi corporis aliquid."
-          linkHref="/"
-          linkHeader="Домашняя"
+          sectionName=""
+          sectionHeader="Галерея"
+          description={[
+            "На небо мною брошена,",
+            <br key={"br1"} />,
+            "Янтарная горошина -",
+            <br key={"br2"} />,
+            "Признание в любви...",
+          ]}
+          linkHref="/photos"
+          linkHeader="Лови ее, лови!"
         />
         <ImageSection imageSrc={shevalekPortrait} links />
         <VideoSection
           videoSrc="/airplane.mov"
-          sectionName="описание раздела"
-          sectionHeader="Алеша - Галоша"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit officia totam omnis saepe vero, blanditiis neque ducimus nemo adipisci accusamus consectetur inventore, natus qui deserunt voluptatem, expedita commodi corporis aliquid."
-          linkHref="/"
-          linkHeader="Домашняя"
+          sectionName=""
+          sectionHeader="Поэзия"
+          description={[
+            "Тобою обнаружена",
+            <br key={"br1"} />,
+            "Волшебная жемчужина",
+          ]}
+          linkHref="/notes"
+          linkHeader="Лови ее, лови!"
         />
       </main>
     </>

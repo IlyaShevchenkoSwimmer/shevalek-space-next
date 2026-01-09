@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { ReactNode } from "react";
 
 interface VideoSectionProps {
   videoSrc: string;
   sectionName?: string;
   sectionHeader: string;
-  description?: string;
+  description?: string | (string | ReactNode)[];
   linkHref: string;
   linkHeader: string;
 }

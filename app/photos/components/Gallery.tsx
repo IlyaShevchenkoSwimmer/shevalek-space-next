@@ -19,7 +19,8 @@ interface GalleryVersion {
 
 export default function Gallery({ version }: GalleryVersion) {
   const [photos, setPhotos] = useState<Photo[]>([]);
-  const [currentFilter, setCurrentFilter] = useState<string>("");
+  const [currentFilter, setCurrentFilter] =
+    useState<string>("Небесная жемчужина");
   const [startingPhoto, setStartingPhoto] = useState<number>(0);
   const [carouselVisibility, setCarouselVisibility] = useState<
     "hidden" | "visible"
